@@ -4,14 +4,15 @@
     "version": "0.0.1",
     "title": "ZelFlux",
     "contact": {
-      "email": "tadeas.kmenta@zel.cash"
+      "email": "tadeas.kmenta@zel.cash",
+      "url": "https://zelcash.github.io/zelfluxdocs/"
     },
     "license": {
       "name": "GNU AGPLv3",
       "url": "https://www.gnu.org/licenses/agpl-3.0.en.html"
     },
     "x-logo": {
-      "url": "https://raw.githubusercontent.com/zelcash/zelflux/master/ZelFront/src/assets/img/ZelNodes.svg"
+      "url": "https://raw.githubusercontent.com/zelcash/zelfluxdocs/master/zelflux.png"
     },
     "description": "This is an API documentation of calls available to be made to any ZelFlux\nZelFlux is completely open source and we encourage everyone to feel free and contribute :)\n# Introduction\nZelFlux posseses with 4 tier hiearchy level API. \n* Public API level - available without any permission, does not require signing\n* User API level - user level permission, requires signing\n* ZelTeam API level - ZelTeam level permission (an appointed Zel Team member has access to those API calls), requires signing\n* Admin API level - Admin level permission, requires signing. ZelNode owner.\n\nMost calls are available via GET request with some that may require large amount of data via POST request. \nWebsocket is currently used only for simplifying login operations and for internal ZelFlux communication\n"
   },

@@ -4,11 +4,12 @@ info:
   title: ZelFlux
   contact:
     email: tadeas.kmenta@zel.cash
+    url: 'https://zelcash.github.io/zelfluxdocs/'
   license:
     name: GNU AGPLv3
     url: 'https://www.gnu.org/licenses/agpl-3.0.en.html'
   x-logo:
-    url: 'https://raw.githubusercontent.com/zelcash/zelflux/master/ZelFront/src/assets/img/ZelNodes.svg'
+    url: 'https://raw.githubusercontent.com/zelcash/zelfluxdocs/master/zelflux.png'
   description: |
     This is an API documentation of calls available to be made to any ZelFlux
     ZelFlux is completely open source and we encourage everyone to feel free and contribute :)
