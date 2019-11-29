@@ -44,6 +44,9 @@
   ],
   "servers": [
     {
+      "url": "https://basic2.thecorporation.club"
+    },
+    {
       "url": "http://157.230.249.150:16127"
     },
     {
