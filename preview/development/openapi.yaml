@@ -21,7 +21,7 @@ info:
     * **Admin** API level - Admin level permission, requires signing. ZelNode owner.
     * **AdminAndZelTeam** API level permission (Admin and ZelTeam has access to these calls), requires signing.
     * **AppOwner** API level - AppOwner level permission, requires signing. App Owner.
-    * **AppOwnerAbove** API level - AppOwnerAbove level permission (App Owner, ZelTeam, and Admin has access to these calls), requires signing. 
+    * **AppOwnerAbove** API level - AppOwnerAbove level permission (App Owner, ZelTeam, and Admin has access to these calls), requires signing.
 
     Most calls are available via GET request with some that may require large amount of data via POST request.
     Websocket is currently used only for simplifying login operations and for internal ZelFlux communication.
@@ -762,7 +762,7 @@ paths:
                   message: |-
                     2020-09-12 01:41:43 keypool reserve 6
                     2020-09-12 01:41:43 keypool return 6
-                    2020-09-12 01:41:47 UpdateTip: new best=00000001445f7d700c03f4815cbd3504ba4b133f33493fa0513dfb34a904c024  height=684556  log2_work=45.426889  tx=4126528  date=2020-09-12 01:40:03 progress=0.999999  cache=55.5MiB(15859tx)
+                    2020-09-12 01:41:47 UpdateTip: new best=00000001445f7d700c03f4815cbd3504ba4b133f33493fa0513dfb34a904c024 height=684556  log2_work=45.426889  tx=4126528 date=2020-09-12 01:40:03 progress=0.999999 cache=55.5MiB(15859tx)
                     2020-09-12 01:41:48 keypool reserve 6
                     2020-09-12 01:41:48 keypool return 6
                     2020-09-12 01:41:51 keypool reserve 6
@@ -836,7 +836,7 @@ paths:
                     2020-09-12 01:44:27 keypool reserve 6
                     2020-09-12 01:44:27 keypool return 6
                     2020-09-12 01:44:29 remove: Remove zelnode tx from mempool 4fea691828378a1cfabfe43ca29b527aea98c81a9ecb3e12a70a53d2eed2c924
-                    2020-09-12 01:44:29 UpdateTip: new best=000000747c5d711cb2ae3187797051307b10c2732299cdc2cb8078b1cef91d7d  height=684557  log2_work=45.426889  tx=4126534  date=2020-09-12 01:43:47 progress=1.000000  cache=55.5MiB(15862tx)
+                    2020-09-12 01:44:29 UpdateTip: new best=000000747c5d711cb2ae3187797051307b10c2732299cdc2cb8078b1cef91d7d height=684557  log2_work=45.426889  tx=4126534 date=2020-09-12 01:43:47 progress=1.000000 cache=55.5MiB(15862tx)
                     2020-09-12 01:44:29 Zelnode found nothing to do: COutPoint(9c8af320e5, 0)
                     2020-09-12 01:44:30 AcceptToMemoryPool: Adding zelnode transaction to mempool: COutPoint(a5b2a9ebbb, 0) hash: 928f795ecc704c3f0411512ebe3f2732f4f1d94f4dd9239147c8d6cbdf80228e
                     2020-09-12 01:44:30 AcceptToMemoryPool: Adding zelnode transaction to mempool: COutPoint(87b6472d8d, 0) hash: c66fada272ddd909aa20a413e8dfa8ecb9e80bdfabe06fe21ca8216923d8fab6
@@ -1088,7 +1088,7 @@ paths:
                     2020-09-12T00:23:28.308Z          {}
                     2020-09-12T00:23:28.409Z          {}
                     2020-09-12T00:23:57.695Z          {}
-                    2020-09-12T00:24:04.521Z          {"code":-28,"name":"Error","message":"Activating best chain..."}
+                    2020-09-12T00:24:04.521Z {"code":-28,"name":"Error","message":"Activating best chain..."}
                     2020-09-12T00:24:19.135Z          {}
                     2020-09-12T00:34:22.624Z          {}
                     2020-09-12T00:49:11.875Z          {}
@@ -4805,7 +4805,7 @@ paths:
           name: addresses
           required: true
           description: |
-            Json object or url encoded json. The key is the Zelcash address, the value is the ZEL amount.. 
+            Json object or url encoded json. The key is the Zelcash address, the value is the ZEL amount..
 
             Url encoded example:
             - `addresses=%7B%22t1JKRwXGfKTGfPV1z48rvoLyabk31z3xwHa%22%3A112.50000000%7D`
