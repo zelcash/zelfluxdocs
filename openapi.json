@@ -56,6 +56,9 @@
   ],
   "servers": [
     {
+      "url": "https://1.api.fluxos.network"
+    },
+    {
       "url": "http://167.86.116.11:16127"
     },
     {
