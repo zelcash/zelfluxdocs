@@ -1,53 +1,49 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "0.1.0",
-    "title": "ZelFlux",
+    "version": "0.2.0",
+    "title": "Flux",
     "contact": {
-      "email": "tadeas.kmenta@zel.cash",
-      "url": "https://zelcash.github.io/zelfluxdocs/"
+      "email": "tadeas@zel.network",
+      "url": "https://docs.runonflux.io"
     },
     "license": {
       "name": "GNU AGPLv3",
       "url": "https://www.gnu.org/licenses/agpl-3.0.en.html"
     },
     "x-logo": {
-      "url": "https://raw.githubusercontent.com/zelcash/zelfluxdocs/master/zelflux.png"
+      "url": "https://raw.githubusercontent.com/runonflux/fluxdocs/master/flux.jpg"
     },
-    "description": "This is an API documentation of calls available to be made to any ZelFlux. <br> GET Calls are available as both query and in order as path. <br> ZelFlux is completely open source and we encourage everyone to feel free and contribute :) <br> Further questions or support join and ask in our [discord](https://discord.io/zel)\n\n# Introduction\nZelFlux possesses a 5 tier hiearchy level API.\n* **Public** API level - Available without any permission, does not require signing.\n* **User** API level - User level permission, requires signing.\n* **ZelTeam** API level - ZelTeam level permission (an appointed Zel Team member has access to those API calls), requires signing.\n* **Admin** API level - Admin level permission, requires signing. ZelNode owner.\n* **AdminAndZelTeam** API level permission (Admin and ZelTeam has access to these calls), requires signing.\n* **AppOwner** API level - AppOwner level permission, requires signing. App Owner.\n* **AppOwnerAbove** API level - AppOwnerAbove level permission (App Owner, ZelTeam, and Admin has access to these calls), requires signing.\n\nMost calls are available via GET request with some that may require large amount of data via POST request.\nWebsocket is currently used only for simplifying login operations and for internal ZelFlux communication."
+    "description": "This is an API documentation of calls available to be made to any Flux. <br> GET Calls are available as both query and in order as path. <br> Flux is completely open source and we encourage everyone to feel free and contribute :) <br> Further questions or support join and ask in our [discord](https://discord.io/runonflux)\n\n# Introduction\nFlux possesses a 5 tier hiearchy level API.\n* **Public** API level - Available without any permission, does not require signing.\n* **User** API level - User level permission, requires signing.\n* **FluxTeam** API level - FluxTeam level permission (an appointed Flux Team member has access to those API calls), requires signing.\n* **Admin** API level - Admin level permission, requires signing. Flux owner.\n* **AdminAndFluxTeam** API level permission (Admin and Flux Team has access to these calls), requires signing.\n* **AppOwner** API level - AppOwner level permission, requires signing. App Owner.\n* **AppOwnerAbove** API level - AppOwnerAbove level permission (App Owner, FluxTeam, and Admin has access to these calls), requires signing.\n\nMost calls are available via GET request with some that may require large amount of data via POST request.\nWebsocket is currently used only for simplifying login operations and for internal Flux communication."
   },
   "externalDocs": {
-    "description": "ZelFlux",
-    "url": "https://github.com/zelcash/zelflux"
+    "description": "Flux",
+    "url": "https://github.com/runonflux/flux"
   },
   "tags": [
     {
       "name": "Authentication",
-      "description": "Calls that are neccessary to be made for correct signing into ZelFlux and obtaining zelauth header."
+      "description": "Calls that are neccessary to be made for correct signing into Flux and obtaining zelauth header."
     },
     {
-      "name": "ZelID",
-      "description": "Calls that interact with ZelID and login/authentication management of ZelFlux"
+      "name": "ID",
+      "description": "Calls that interact with Identity via ZelID and login/authentication  management of Flux"
     },
     {
-      "name": "ZelFlux",
-      "description": "Calls that interact with ZelFlux and its network"
+      "name": "Daemon",
+      "description": "Calls that interact with locally running Flux daemon"
     },
     {
-      "name": "ZelCash",
-      "description": "Calls that interact with locally running ZelCash daemon"
+      "name": "Benchmark",
+      "description": "Calls that interact with locally running Benchmark daemon"
     },
     {
-      "name": "ZelBench",
-      "description": "Calls that interact with locally running ZelBench daemon"
+      "name": "Flux",
+      "description": "Calls that interact with Flux and its network"
     },
     {
-      "name": "ZelNode",
-      "description": "Calls that interact with local ZelNode and its network"
-    },
-    {
-      "name": "ZelApps",
-      "description": "Calls that interact with ZelApps fascilitated by local ZelFlux and ZelNode network"
+      "name": "Apps",
+      "description": "Calls that interact with Apps fascilitated by local Flux and Flux network"
     },
     {
       "name": "Explorer",
@@ -56,51 +52,18 @@
   ],
   "servers": [
     {
-      "url": "https://1.api.fluxos.network"
-    },
-    {
-      "url": "http://167.86.116.11:16127"
-    },
-    {
-      "url": "http://95.217.72.235:16127"
-    },
-    {
-      "url": "http://47.22.47.182:16127"
-    },
-    {
-      "url": "http://47.22.47.181:16127"
-    },
-    {
-      "url": "http://95.216.115.243:16127"
-    },
-    {
-      "url": "http://193.188.15.253:16127"
-    },
-    {
-      "url": "http://193.188.15.254:16127"
-    },
-    {
-      "url": "http://193.188.15.243:16127"
-    },
-    {
-      "url": "http://167.86.81.87:16127"
-    },
-    {
-      "url": "http://47.22.47.174:16127"
-    },
-    {
-      "url": "http://62.171.181.156:16127"
+      "url": "https://api.runonflux.io"
     }
   ],
   "paths": {
-    "/zelid/loginphrase": {
+    "/id/loginphrase": {
       "get": {
         "tags": [
           "Authentication",
-          "ZelID"
+          "ID"
         ],
         "summary": "Obtain login phrase",
-        "description": "Obtain valid Login Phrase for signing into ZelFlux. Login Phrase is at least 40 characters, first 13 characters is server timestamp and is valid for 15 minutes. **Public**",
+        "description": "Obtain valid Login Phrase for signing into Flux. Login Phrase is at least 40 characters, first 13 characters is server timestamp and is valid for 15 minutes. **Public**",
         "operationId": "loginPhrase",
         "responses": {
           "200": {
@@ -129,13 +92,13 @@
         }
       }
     },
-    "/zelid/emergencyphrase": {
+    "/id/emergencyphrase": {
       "get": {
         "tags": [
-          "ZelID"
+          "ID"
         ],
         "summary": "Obtain emergency login phrase",
-        "description": "Obtain emergency Login Phrase for signing into ZelFlux. **Public**",
+        "description": "Obtain emergency Login Phrase for signing into Flux. **Public**",
         "operationId": "emergencyLoginPhrase",
         "responses": {
           "200": {
@@ -164,14 +127,14 @@
         }
       }
     },
-    "/zelid/verifylogin": {
+    "/id/verifylogin": {
       "post": {
         "tags": [
           "Authentication",
-          "ZelID"
+          "ID"
         ],
-        "summary": "Login into ZelFlux",
-        "description": "Login into ZelFlux by submitting correct ZelID, login phrase and signature. Note that to get the signature of the signed message you would need to do the signing on Zelcore or your BTC wallet. If success status response is returned, we can use the supplied data(zelid, loginPhrase, signature) as zelauth header as part of api calls that require a user to be logged in. Additionally it is possible to listen for a response on websocket. ws://{ZelNode_IP}:16127/ws/zelid/{loginPhrase}. **Public**",
+        "summary": "Login into Flux",
+        "description": "Login into Flux by submitting correct ZelID, login phrase and signature. Note that to get the signature of the signed message you would need to do the signing on Zelcore or your BTC wallet. If success status response is returned, we can use the supplied data(zelid, loginPhrase, signature) as zelauth header as part of api calls that require a user to be logged in. Additionally it is possible to listen for a response on websocket. ws://{Flux_IP}:16127/ws/id/{loginPhrase}. **Public**",
         "operationId": "verifyLogin",
         "responses": {
           "200": {
@@ -210,10 +173,10 @@
                         },
                         "privilege": {
                           "type": "string",
-                          "description": "granted ZelFlux privilege",
+                          "description": "granted Flux privilege",
                           "enum": [
                             "user",
-                            "zelteam",
+                            "fluxteam",
                             "admin"
                           ]
                         }
@@ -248,11 +211,11 @@
         }
       }
     },
-    "/zelid/providesign": {
+    "/id/providesign": {
       "post": {
         "tags": [
           "Authentication",
-          "ZelID"
+          "ID"
         ],
         "summary": "Provide Signature",
         "description": "Provide requested signature from signed message to return data. **Public**",
@@ -270,7 +233,7 @@
                   },
                   "message": {
                     "type": "string",
-                    "description": "Login phrase message that was provided by GET /zelid/loginphrase"
+                    "description": "Login phrase message that was provided by GET /id/loginphrase"
                   },
                   "signature": {
                     "type": "string",
@@ -340,13 +303,13 @@
         }
       }
     },
-    "/zelid/loggedsessions": {
+    "/id/loggedsessions": {
       "get": {
         "tags": [
-          "ZelID"
+          "ID"
         ],
         "summary": "Obtain all logged sessions of ZelID.",
-        "description": "Gets all currently active logged sessions in ZelFlux tied to given ZelID. **User**",
+        "description": "Gets all currently active logged sessions in Flux tied to given ZelID. **User**",
         "operationId": "loggedSessions",
         "security": [
           {
@@ -417,10 +380,10 @@
         }
       }
     },
-    "/zelid/logoutcurrentsession": {
+    "/id/logoutcurrentsession": {
       "get": {
         "tags": [
-          "ZelID"
+          "ID"
         ],
         "summary": "Logs out current session",
         "description": "This call logs out currently logged session which is determined by the supplied authentication header. **User**",
@@ -458,10 +421,10 @@
         }
       }
     },
-    "/zelid/logoutallsessions": {
+    "/id/logoutallsessions": {
       "get": {
         "tags": [
-          "ZelID"
+          "ID"
         ],
         "summary": "Logs out all sessions",
         "description": "This call logs out all logged sessions which are determined by the supplied authentication header. **User**",
@@ -499,10 +462,10 @@
         }
       }
     },
-    "/zelid/loggedusers": {
+    "/id/loggedusers": {
       "get": {
         "tags": [
-          "ZelID"
+          "ID"
         ],
         "summary": "Gets information about logged users",
         "description": "This call gets basic infromation about currently logged sessions of all users. **Admin**",
@@ -560,10 +523,10 @@
         }
       }
     },
-    "/zelid/activeloginphrases": {
+    "/id/activeloginphrases": {
       "get": {
         "tags": [
-          "ZelID"
+          "ID"
         ],
         "summary": "Lists active login phrases",
         "description": "This call gets a list of login phrases that are currently active (were generated less than 15 minutes ago) - phrases that have been used recently and phrases that can be used to log in.. **Admin**",
@@ -627,13 +590,13 @@
         }
       }
     },
-    "/zelid/logoutallusers": {
+    "/id/logoutallusers": {
       "get": {
         "tags": [
-          "ZelID"
+          "ID"
         ],
         "summary": "Logs out all users",
-        "description": "This call logs out all logged users (including zelteam, admins). **Admin**",
+        "description": "This call logs out all logged users (including fluxteam, admins). **Admin**",
         "operationId": "logoutAllUsers",
         "security": [
           {
@@ -668,10 +631,10 @@
         }
       }
     },
-    "/zelid/adjustcruxid": {
+    "/id/adjustcruxid": {
       "get": {
         "tags": [
-          "ZelID"
+          "ID"
         ],
         "summary": "Adjust CruxID",
         "description": "This will add/update your CruxID. **Admin**",
@@ -721,7 +684,7 @@
         }
       }
     },
-    "/zelid/logoutspecificsession": {
+    "/id/logoutspecificsession": {
       "post": {
         "tags": [
           "Authentication",
@@ -782,14 +745,14 @@
         }
       }
     },
-    "/zelnode/startzelcash": {
+    "/flux/startdaemon": {
       "get": {
         "tags": [
-          "ZelNode"
+          "Flux"
         ],
-        "summary": "Starts ZelNodes ZelCash daemon",
-        "description": "Tries to start ZelCash daemon running on the ZelNode the call is run against without any extra parameters. **Admin**",
-        "operationId": "startZelCash",
+        "summary": "Starts Flux daemon",
+        "description": "Tries to start Flux daemon running on the Flux node the call is run against without any extra parameters. **Admin**",
+        "operationId": "startdaemon",
         "security": [
           {
             "ZelID": []
@@ -823,14 +786,14 @@
         }
       }
     },
-    "/zelnode/restartzelcash": {
+    "/flux/restartdaemon": {
       "get": {
         "tags": [
-          "ZelNode"
+          "Flux"
         ],
-        "summary": "Restarts ZelNodes ZelCash daemon",
-        "description": "Tries to restart ZelCash daemon running on the ZelNode the call is run against. ZelCash daemon is firstly stopped and then started without any extra parameters. **Admin**",
-        "operationId": "restartZelCash",
+        "summary": "Restarts Flux daemon",
+        "description": "Tries to restart Flux daemon running on the Flux node the call is run against. Flux daemon is firstly stopped and then started without any extra parameters. **Admin**",
+        "operationId": "restartdaemon",
         "security": [
           {
             "ZelID": []
@@ -855,7 +818,7 @@
                 "example": {
                   "status": "success",
                   "data": {
-                    "message": "ZelCash successfully restarted"
+                    "message": "Daemon successfully restarted"
                   }
                 }
               }
@@ -864,13 +827,13 @@
         }
       }
     },
-    "/zelnode/reindexzelcash": {
+    "/flux/reindexdaemon": {
       "get": {
         "tags": [
-          "ZelNode"
+          "Flux"
         ],
-        "summary": "Reindexes ZelNodes ZelCash daemon",
-        "description": "Tries to reindex ZelCash daemon running on the ZelNode the call is run against. ZelCash daemon is firstly stopped and then started with reindex flag. **Admin**",
+        "summary": "Reindexes Flux daemon",
+        "description": "Tries to reindex ZelCash daemon running on the Flux node the call is run against. ZelCash daemon is firstly stopped and then started with reindex flag. **Admin**",
         "operationId": "reindexZelCashB",
         "security": [
           {
@@ -905,14 +868,14 @@
         }
       }
     },
-    "/zelnode/updatezelflux": {
+    "/flux/udpateflux": {
       "get": {
         "tags": [
-          "ZelNode"
+          "Flux"
         ],
-        "summary": "Updates ZelFlux to the latest version",
-        "description": "Updates ZelFlux to the latest version available according to github master branch. ZelFlux will restart its services after the update. **AdminAndZelTeam**",
-        "operationId": "updateZelFlux",
+        "summary": "Updates Flux to the latest version",
+        "description": "Updates Flux to the latest version available according to github master branch. Flux will restart its services after the update. **AdminAndFluxTeam**",
+        "operationId": "updateFlux",
         "security": [
           {
             "ZelID": []
@@ -937,7 +900,7 @@
                 "example": {
                   "status": "success",
                   "data": {
-                    "message": "ZelFlux successfully updating"
+                    "message": "Flux successfully updating"
                   }
                 }
               }
@@ -946,14 +909,14 @@
         }
       }
     },
-    "/zelnode/hardupdatezelflux": {
+    "/flux/hardupdateflux": {
       "get": {
         "tags": [
-          "ZelNode"
+          "Flux"
         ],
         "summary": "Perform hard update to the latest version",
-        "description": "Hard updates to latest version by removing node_modules and package-lock.json before executing git reset --hard and git pull. This may resolve any issues that may arise from ZelFlux not being able to update using the `GET /zelnode/updatezelflux` call. ZelFlux will restart its services after the update. **AdminAndZelTeam**",
-        "operationId": "hardUpdateZelFlux",
+        "description": "Hard updates to latest version by removing node_modules and package-lock.json before executing git reset --hard and git pull. This may resolve any issues that may arise from Flux not being able to update using the `GET /flux/updateflux` call. Flux will restart its services after the update. **AdminAndFluxTeam**",
+        "operationId": "hardUpdateFlux",
         "security": [
           {
             "ZelID": []
@@ -978,7 +941,7 @@
                 "example": {
                   "status": "success",
                   "data": {
-                    "message": "ZelFlux successfully updating"
+                    "message": "Flux successfully updating"
                   }
                 }
               }
@@ -987,13 +950,13 @@
         }
       }
     },
-    "/zelnode/rebuildzelfront": {
+    "/flux/rebuildhome": {
       "get": {
         "tags": [
-          "ZelNode"
+          "Flux"
         ],
-        "summary": "Rebuild UI - ZelFront of ZelFlux",
-        "description": "Rebuilds ZelFront part of ZelFlux. May help resolving frontend issues. **AdminAndZelTeam**",
+        "summary": "Rebuild UI - Home of Flux",
+        "description": "Rebuilds Home part of Flux. May help resolving frontend issues. **AdminAndFluxTeam**",
         "operationId": "rebuildZelFront",
         "security": [
           {
@@ -1019,7 +982,7 @@
                 "example": {
                   "status": "success",
                   "data": {
-                    "message": "ZelFlux successfully rebuilt"
+                    "message": "Flux successfully rebuilt"
                   }
                 }
               }
@@ -1028,14 +991,14 @@
         }
       }
     },
-    "/zelnode/updatezelcash": {
+    "/flux/updatedaemon": {
       "get": {
         "tags": [
-          "ZelNode"
+          "Flux"
         ],
-        "summary": "Updates ZelCash daemon",
-        "description": "Updates the ZelCash daemon of ZelNode to the latest available version according to official Zel APT repository. ZelCash daemon is restarted with no extra parameters during this update. **AdminAndZelTeam**",
-        "operationId": "updateZelCash",
+        "summary": "Updates Flux daemon",
+        "description": "Updates the Flux daemon of Flux node to the latest available version according to official Flux APT repository. Flux daemon is restarted with no extra parameters during this update. **AdminAndFluxTeam**",
+        "operationId": "updateDaemon",
         "security": [
           {
             "ZelID": []
@@ -1060,7 +1023,7 @@
                 "example": {
                   "status": "success",
                   "data": {
-                    "message": "ZelCash successfully updated"
+                    "message": "Daemon successfully updated"
                   }
                 }
               }
@@ -1069,14 +1032,14 @@
         }
       }
     },
-    "/zelnode/updatezelbench": {
+    "/flux/updatebenchmark": {
       "get": {
         "tags": [
-          "ZelNode"
+          "Flux"
         ],
-        "summary": "Updates Zelbench daemon",
-        "description": "Updates the ZelBench daemon of ZelNode to the latest available version according to official Zel APT repository. ZelBench daemon is restarted with no extra parameters during this update. **AdminAndZelTeam**",
-        "operationId": "updateZelBench",
+        "summary": "Updates Benchmark daemon",
+        "description": "Updates the Benchmark daemon of Flux node to the latest available version according to official Zel APT repository. Benchmark daemon is restarted with no extra parameters during this update. **AdminAndFluxTeam**",
+        "operationId": "updateBenchmark",
         "security": [
           {
             "ZelID": []
@@ -1101,7 +1064,7 @@
                 "example": {
                   "status": "success",
                   "data": {
-                    "message": "ZelBench successfully updated"
+                    "message": "Benchmark successfully updated"
                   }
                 }
               }
@@ -1110,13 +1073,13 @@
         }
       }
     },
-    "/zelnode/zelcashdebug": {
+    "/flux/daemondebug": {
       "get": {
         "tags": [
-          "ZelNode"
+          "Flux"
         ],
         "summary": "Returns with the ZelCash debug log",
-        "description": "Returns with the debug log located in ZelCash data directory. **AdminAndZelTeam**",
+        "description": "Returns with the debug log located in ZelCash data directory. **AdminAndFluxTeam**",
         "operationId": "zelcashDebug",
         "security": [
           {
@@ -1139,14 +1102,14 @@
         }
       }
     },
-    "/zelnode/zelbenchdebug": {
+    "/flux/benchmarkdebug": {
       "get": {
         "tags": [
-          "ZelNode"
+          "Flux"
         ],
-        "summary": "Returns with the ZelBench debug log",
-        "description": "Returns with the debug log located in zelbenchmark directory. **AdminAndZelTeam**",
-        "operationId": "zelbenchDebug",
+        "summary": "Returns with the Benchmark debug log",
+        "description": "Returns with the debug log located in fluxbenchmark directory. **AdminAndFluxTeam**",
+        "operationId": "benchmarkDebuf",
         "security": [
           {
             "ZelID": []
@@ -1161,20 +1124,20 @@
                   "type": "string",
                   "description": "Debug log"
                 },
-                "example": "2020-05-13 16:59:02 Benchmark version v1.0.0-beta1-53e0ea2-dirty (2020-04-25 13:03:38 +0800) 2020-05-13 16:59:02 Using OpenSSL version OpenSSL 1.1.1a  20 Nov 2018 2020-05-13 16:59:02 HTTP: creating work queue of depth 16 2020-05-13 16:59:02 HTTP: starting 4 worker threads 2020-05-13 16:59:02 Bound to [::]:16225 2020-05-13 16:59:02 Bound to 0.0.0.0:16225 2020-05-13 16:59:02 init message: Done loading 2020-05-13 16:59:02 Starting Zelnodes Benchmarking Thread 2020-05-13 16:59:03 Path: /home/zel/zelflux/ZelBack 2020-05-13 16:59:03 ---ZelFlux usage: 0.23012 2020-05-13 16:59:03 ---package evaluator system setup starting 2020-05-13 16:59:03 ---package evaluator already installed 2020-05-13 16:59:03 ---package evaluator found version: 1.0.11 2020-05-13 16:59:03 ---package evaluator system setup completed 2020-05-13 16:59:03 ---Starting computer specs test 2020-05-13 16:59:08 ---Found cores: 2 2020-05-13 16:59:08 ---Found ram: 3.8 2020-05-13 16:59:08 ---Found HDD: 38.200001 G 2020-05-13 16:59:08 ---Found HDD: 12.000000 G 2020-05-13 16:59:08 ---Found DD_WRITE: 675.628 2020-05-13 16:59:08 ---Finished computer specs test 2020-05-13 16:59:08 ---Starting package evaluator test 2020-05-13 16:59:29 ---Found eps v1: 157.185 2020-05-13 16:59:29 ---Finished package evaluator test"
+                "example": "2020-05-13 16:59:02 Benchmark version v1.0.0-beta1-53e0ea2-dirty (2020-04-25 13:03:38 +0800) 2020-05-13 16:59:02 Using OpenSSL version OpenSSL 1.1.1a  20 Nov 2018 2020-05-13 16:59:02 HTTP: creating work queue of depth 16 2020-05-13 16:59:02 HTTP: starting 4 worker threads 2020-05-13 16:59:02 Bound to [::]:16225 2020-05-13 16:59:02 Bound to 0.0.0.0:16225 2020-05-13 16:59:02 init message: Done loading 2020-05-13 16:59:02 Starting Zelnodes Benchmarking Thread 2020-05-13 16:59:03 Path: /home/zel/zelflux/ZelBack 2020-05-13 16:59:03 ---Flux usage: 0.23012 2020-05-13 16:59:03 ---package evaluator system setup starting 2020-05-13 16:59:03 ---package evaluator already installed 2020-05-13 16:59:03 ---package evaluator found version: 1.0.11 2020-05-13 16:59:03 ---package evaluator system setup completed 2020-05-13 16:59:03 ---Starting computer specs test 2020-05-13 16:59:08 ---Found cores: 2 2020-05-13 16:59:08 ---Found ram: 3.8 2020-05-13 16:59:08 ---Found HDD: 38.200001 G 2020-05-13 16:59:08 ---Found HDD: 12.000000 G 2020-05-13 16:59:08 ---Found DD_WRITE: 675.628 2020-05-13 16:59:08 ---Finished computer specs test 2020-05-13 16:59:08 ---Starting package evaluator test 2020-05-13 16:59:29 ---Found eps v1: 157.185 2020-05-13 16:59:29 ---Finished package evaluator test"
               }
             }
           }
         }
       }
     },
-    "/zelnode/tailzelcashdebug": {
+    "/flux/taildaemondebug": {
       "get": {
         "tags": [
-          "ZelNode"
+          "Flux"
         ],
         "summary": "Returns last lines of ZelCash debug log",
-        "description": "Returns last 100 lines known in the ZelCash debug log. **AdminAndZelTeam**",
+        "description": "Returns last 100 lines known in the ZelCash debug log. **AdminAndFluxTeam**",
         "operationId": "tailZelCashDebug",
         "security": [
           {
@@ -1209,13 +1172,13 @@
         }
       }
     },
-    "/zelnode/tailzelbenchdebug": {
+    "/flux/tailbenchmarkdebug": {
       "get": {
         "tags": [
-          "ZelNode"
+          "Flux"
         ],
         "summary": "Returns last lines of ZelBench debug log",
-        "description": "Returns last 100 lines known in the ZelBench debug log. **AdminAndZelTeam**",
+        "description": "Returns last 100 lines known in the ZelBench debug log. **AdminAndFluxTeam**",
         "operationId": "tailZelBenchDebug",
         "security": [
           {
@@ -1241,7 +1204,7 @@
                 "example": {
                   "status": "success",
                   "data": {
-                    "message": "2020-09-12 00:03:39 ---Using Historical eps: 167.846\n2020-09-12 00:03:39 ---Finished package evaluator test\n2020-09-12 00:23:25 Shutdown: In progress...\n2020-09-12 00:23:25 StopRPC: waiting for async rpc workers to stop\n2020-09-12 00:23:25 Shutdown: done\n2020-09-12 00:24:09\n2020-09-12 00:24:09 Benchmark version v1.0.0-beta1-b16e73c-dirty (2020-07-16 22:58:47 +0200)\n2020-09-12 00:24:09 Using OpenSSL version OpenSSL 1.1.1a  20 Nov 2018\n2020-09-12 00:24:09 HTTP: creating work queue of depth 16\n2020-09-12 00:24:09 HTTP: starting 4 worker threads\n2020-09-12 00:24:09 Bound to [::]:16225\n2020-09-12 00:24:09 Bound to 0.0.0.0:16225\n2020-09-12 00:24:09 init message: Done loading\n2020-09-12 00:24:09 Starting Zelnodes Benchmarking Thread\n2020-09-12 00:24:10 Path: /home/zel/zelflux/ZelBack\n2020-09-12 00:25:10 ---ZelFlux usage: 0.44897\n2020-09-12 00:25:10 ---package evaluator system setup starting\n2020-09-12 00:25:10 ---package evaluator already installed\n2020-09-12 00:25:10 ---package evaluator found version: 1.0.11\n2020-09-12 00:25:10 ---package evaluator system setup completed\n2020-09-12 00:25:10 ---Starting computer specs test\n2020-09-12 00:25:15 ---Found cores: 2\n2020-09-12 00:25:15 ---Found ram: 3.8\n2020-09-12 00:25:15 ---Found HDD: 38.200001 G\n2020-09-12 00:25:15 ---Found HDD: 13.000000 G\n2020-09-12 00:25:15 ---Found DD_WRITE: 745.264\n2020-09-12 00:25:15 ---Finished computer specs test\n2020-09-12 00:25:15 ---Starting package evaluator test\n2020-09-12 00:25:35 ---Found eps v1: 176.479\n2020-09-12 00:25:35 ---Finished package evaluator test\n2020-09-12 00:55:45 ---Restarting benchmarks\n2020-09-12 00:55:46 Path: /home/zel/zelflux/ZelBack\n2020-09-12 00:55:46 ---ZelFlux usage: 0.16616\n2020-09-12 00:55:46 ---package evaluator system setup starting\n2020-09-12 00:55:46 ---package evaluator already installed\n2020-09-12 00:55:46 ---package evaluator found version: 1.0.11\n2020-09-12 00:55:46 ---package evaluator system setup completed\n2020-09-12 00:55:46 ---Starting computer specs test\n2020-09-12 00:55:46 ---Found cores: 2\n2020-09-12 00:55:46 ---Found ram: 3.8\n2020-09-12 00:55:46 ---Found HDD: 38.200001 G\n2020-09-12 00:55:46 ---Found HDD: 13.000000 G\n2020-09-12 00:55:46 ---Using Historical DD_WRITE: 745.264\n2020-09-12 00:55:46 ---Finished computer specs test\n2020-09-12 00:55:46 ---Starting package evaluator test\n2020-09-12 00:55:46 ---Using Historical eps: 176.479\n2020-09-12 00:55:46 ---Finished package evaluator test\n2020-09-12 01:25:56 ---Restarting benchmarks\n2020-09-12 01:25:57 Path: /home/zel/zelflux/ZelBack\n2020-09-12 01:25:57 ---ZelFlux usage: 0.21791\n2020-09-12 01:25:57 ---package evaluator system setup starting\n2020-09-12 01:25:57 ---package evaluator already installed\n2020-09-12 01:25:57 ---package evaluator found version: 1.0.11\n2020-09-12 01:25:57 ---package evaluator system setup completed\n2020-09-12 01:25:57 ---Starting computer specs test\n2020-09-12 01:25:57 ---Found cores: 2\n2020-09-12 01:25:57 ---Found ram: 3.8\n2020-09-12 01:25:57 ---Found HDD: 38.200001 G\n2020-09-12 01:25:57 ---Found HDD: 13.000000 G\n2020-09-12 01:25:57 ---Using Historical DD_WRITE: 745.264\n2020-09-12 01:25:57 ---Finished computer specs test\n2020-09-12 01:25:57 ---Starting package evaluator test\n2020-09-12 01:25:57 ---Using Historical eps: 176.479\n2020-09-12 01:25:57 ---Finished package evaluator test\n2020-09-12 01:56:07 ---Restarting benchmarks\n2020-09-12 01:56:08 Path: /home/zel/zelflux/ZelBack\n2020-09-12 01:56:08 ---ZelFlux usage: 0.19594\n2020-09-12 01:56:08 ---package evaluator system setup starting\n2020-09-12 01:56:08 ---package evaluator already installed\n2020-09-12 01:56:08 ---package evaluator found version: 1.0.11\n2020-09-12 01:56:08 ---package evaluator system setup completed\n2020-09-12 01:56:08 ---Starting computer specs test\n2020-09-12 01:56:08 ---Found cores: 2\n2020-09-12 01:56:08 ---Found ram: 3.8\n2020-09-12 01:56:08 ---Found HDD: 38.200001 G\n2020-09-12 01:56:08 ---Found HDD: 13.000000 G\n2020-09-12 01:56:08 ---Using Historical DD_WRITE: 745.264\n2020-09-12 01:56:08 ---Finished computer specs test\n2020-09-12 01:56:08 ---Starting package evaluator test\n2020-09-12 01:56:28 ---Found eps v1: 167.138\n2020-09-12 01:56:28 ---Finished package evaluator test"
+                    "message": "2020-09-12 00:03:39 ---Using Historical eps: 167.846\n2020-09-12 00:03:39 ---Finished package evaluator test\n2020-09-12 00:23:25 Shutdown: In progress...\n2020-09-12 00:23:25 StopRPC: waiting for async rpc workers to stop\n2020-09-12 00:23:25 Shutdown: done\n2020-09-12 00:24:09\n2020-09-12 00:24:09 Benchmark version v1.0.0-beta1-b16e73c-dirty (2020-07-16 22:58:47 +0200)\n2020-09-12 00:24:09 Using OpenSSL version OpenSSL 1.1.1a  20 Nov 2018\n2020-09-12 00:24:09 HTTP: creating work queue of depth 16\n2020-09-12 00:24:09 HTTP: starting 4 worker threads\n2020-09-12 00:24:09 Bound to [::]:16225\n2020-09-12 00:24:09 Bound to 0.0.0.0:16225\n2020-09-12 00:24:09 init message: Done loading\n2020-09-12 00:24:09 Starting Zelnodes Benchmarking Thread\n2020-09-12 00:24:10 Path: /home/zel/zelflux/ZelBack\n2020-09-12 00:25:10 ---Flux usage: 0.44897\n2020-09-12 00:25:10 ---package evaluator system setup starting\n2020-09-12 00:25:10 ---package evaluator already installed\n2020-09-12 00:25:10 ---package evaluator found version: 1.0.11\n2020-09-12 00:25:10 ---package evaluator system setup completed\n2020-09-12 00:25:10 ---Starting computer specs test\n2020-09-12 00:25:15 ---Found cores: 2\n2020-09-12 00:25:15 ---Found ram: 3.8\n2020-09-12 00:25:15 ---Found HDD: 38.200001 G\n2020-09-12 00:25:15 ---Found HDD: 13.000000 G\n2020-09-12 00:25:15 ---Found DD_WRITE: 745.264\n2020-09-12 00:25:15 ---Finished computer specs test\n2020-09-12 00:25:15 ---Starting package evaluator test\n2020-09-12 00:25:35 ---Found eps v1: 176.479\n2020-09-12 00:25:35 ---Finished package evaluator test\n2020-09-12 00:55:45 ---Restarting benchmarks\n2020-09-12 00:55:46 Path: /home/zel/zelflux/ZelBack\n2020-09-12 00:55:46 ---Flux usage: 0.16616\n2020-09-12 00:55:46 ---package evaluator system setup starting\n2020-09-12 00:55:46 ---package evaluator already installed\n2020-09-12 00:55:46 ---package evaluator found version: 1.0.11\n2020-09-12 00:55:46 ---package evaluator system setup completed\n2020-09-12 00:55:46 ---Starting computer specs test\n2020-09-12 00:55:46 ---Found cores: 2\n2020-09-12 00:55:46 ---Found ram: 3.8\n2020-09-12 00:55:46 ---Found HDD: 38.200001 G\n2020-09-12 00:55:46 ---Found HDD: 13.000000 G\n2020-09-12 00:55:46 ---Using Historical DD_WRITE: 745.264\n2020-09-12 00:55:46 ---Finished computer specs test\n2020-09-12 00:55:46 ---Starting package evaluator test\n2020-09-12 00:55:46 ---Using Historical eps: 176.479\n2020-09-12 00:55:46 ---Finished package evaluator test\n2020-09-12 01:25:56 ---Restarting benchmarks\n2020-09-12 01:25:57 Path: /home/zel/zelflux/ZelBack\n2020-09-12 01:25:57 ---Flux usage: 0.21791\n2020-09-12 01:25:57 ---package evaluator system setup starting\n2020-09-12 01:25:57 ---package evaluator already installed\n2020-09-12 01:25:57 ---package evaluator found version: 1.0.11\n2020-09-12 01:25:57 ---package evaluator system setup completed\n2020-09-12 01:25:57 ---Starting computer specs test\n2020-09-12 01:25:57 ---Found cores: 2\n2020-09-12 01:25:57 ---Found ram: 3.8\n2020-09-12 01:25:57 ---Found HDD: 38.200001 G\n2020-09-12 01:25:57 ---Found HDD: 13.000000 G\n2020-09-12 01:25:57 ---Using Historical DD_WRITE: 745.264\n2020-09-12 01:25:57 ---Finished computer specs test\n2020-09-12 01:25:57 ---Starting package evaluator test\n2020-09-12 01:25:57 ---Using Historical eps: 176.479\n2020-09-12 01:25:57 ---Finished package evaluator test\n2020-09-12 01:56:07 ---Restarting benchmarks\n2020-09-12 01:56:08 Path: /home/zel/zelflux/ZelBack\n2020-09-12 01:56:08 ---Flux usage: 0.19594\n2020-09-12 01:56:08 ---package evaluator system setup starting\n2020-09-12 01:56:08 ---package evaluator already installed\n2020-09-12 01:56:08 ---package evaluator found version: 1.0.11\n2020-09-12 01:56:08 ---package evaluator system setup completed\n2020-09-12 01:56:08 ---Starting computer specs test\n2020-09-12 01:56:08 ---Found cores: 2\n2020-09-12 01:56:08 ---Found ram: 3.8\n2020-09-12 01:56:08 ---Found HDD: 38.200001 G\n2020-09-12 01:56:08 ---Found HDD: 13.000000 G\n2020-09-12 01:56:08 ---Using Historical DD_WRITE: 745.264\n2020-09-12 01:56:08 ---Finished computer specs test\n2020-09-12 01:56:08 ---Starting package evaluator test\n2020-09-12 01:56:28 ---Found eps v1: 167.138\n2020-09-12 01:56:28 ---Finished package evaluator test"
                   }
                 }
               }
@@ -1250,13 +1213,13 @@
         }
       }
     },
-    "/zelnode/zelfluxerrorlog": {
+    "/flux/errorlog": {
       "get": {
         "tags": [
-          "ZelNode"
+          "Flux"
         ],
-        "summary": "Returns with the ZelFlux error log",
-        "description": "Returns with the error log located in zelflux directory. **AdminAndZelTeam**",
+        "summary": "Returns with the Flux error log",
+        "description": "Returns with the error log located in zelflux directory. **AdminAndFluxTeam**",
         "operationId": "zelfluxErrorLog",
         "security": [
           {
@@ -1279,13 +1242,13 @@
         }
       }
     },
-    "/zelnode/tailzelfluxerrorlog": {
+    "/flux/tailerrorlog": {
       "get": {
         "tags": [
-          "ZelNode"
+          "Flux"
         ],
-        "summary": "Returns last lines of ZelFlux error log",
-        "description": "Returns last 100 lines known in the ZelFlux error log. **AdminAndZelTeam**",
+        "summary": "Returns last lines of Flux error log",
+        "description": "Returns last 100 lines known in the Flux error log. **AdminAndFluxTeam**",
         "operationId": "tailFluxErrorLog",
         "security": [
           {
@@ -1320,14 +1283,14 @@
         }
       }
     },
-    "/zelflux/info": {
+    "/flux/info": {
       "get": {
         "tags": [
-          "ZelFlux"
+          "Flux"
         ],
         "summary": "Combined info",
         "description": "Combined info of statuses. **Public**",
-        "operationId": "getZelFluxInfo",
+        "operationId": "getFluxInfo",
         "responses": {
           "200": {
             "description": "OK",
@@ -1346,7 +1309,7 @@
                           "type": "object",
                           "properties": {
                             "info": {
-                              "$ref": "#/components/schemas/zelcashgetinfo"
+                              "$ref": "#/components/schemas/daemongetinfo"
                             }
                           }
                         },
@@ -1573,14 +1536,14 @@
         }
       }
     },
-    "/zelflux/timezone": {
+    "/flux/timezone": {
       "get": {
         "tags": [
-          "ZelFlux"
+          "Flux"
         ],
-        "summary": "ZelFlux timezone",
+        "summary": "Flux timezone",
         "description": "This will return with the timezone of the server. **Public**",
-        "operationId": "getZelFluxTimezone",
+        "operationId": "getFluxTimezone",
         "responses": {
           "200": {
             "description": "OK",
@@ -1608,14 +1571,14 @@
         }
       }
     },
-    "/zelflux/version": {
+    "/flux/version": {
       "get": {
         "tags": [
-          "ZelFlux"
+          "Flux"
         ],
-        "summary": "Gets version of ZelFlux",
-        "description": "Gets version of ZelFlux running on the ZelNode the call is run against as it is in package.json. **Public**",
-        "operationId": "getZelFluxVersion",
+        "summary": "Gets version of Flux",
+        "description": "Gets version of Flux running on the Flux node the call is run against as it is in package.json. **Public**",
+        "operationId": "getFluxVersion",
         "responses": {
           "200": {
             "description": "OK",
@@ -1643,14 +1606,14 @@
         }
       }
     },
-    "/zelflux/ip": {
+    "/flux/ip": {
       "get": {
         "tags": [
-          "ZelFlux"
+          "Flux"
         ],
-        "summary": "ZelFlux IP",
-        "description": "This will return with the IP address of the server that ZelFlux is on. **Public**",
-        "operationId": "getZelFluxIP",
+        "summary": "Flux IP",
+        "description": "This will return with the IP address of the server that Flux is on. **Public**",
+        "operationId": "getFluxIP",
         "responses": {
           "200": {
             "description": "OK",
@@ -1678,14 +1641,14 @@
         }
       }
     },
-    "/zelflux/zelid": {
+    "/flux/zelid": {
       "get": {
         "tags": [
-          "ZelFlux"
+          "Flux"
         ],
         "summary": "Admin's ZelID",
         "description": "This will return with the admin's ZelID. **Public**",
-        "operationId": "getZelFluxZelID",
+        "operationId": "getFluxZelID",
         "responses": {
           "200": {
             "description": "OK",
@@ -1713,14 +1676,14 @@
         }
       }
     },
-    "/zelflux/cruxid": {
+    "/flux/cruxid": {
       "get": {
         "tags": [
-          "ZelFlux"
+          "Flux"
         ],
         "summary": "Admin's CruxID",
         "description": "This will return with the admin's CruxID. **Public**",
-        "operationId": "getZelFluxCruxID",
+        "operationId": "getFluxCruxID",
         "responses": {
           "200": {
             "description": "OK",
@@ -1748,13 +1711,13 @@
         }
       }
     },
-    "/zelflux/dosstate": {
+    "/flux/dosstate": {
       "get": {
         "tags": [
-          "ZelFlux"
+          "Flux"
         ],
         "summary": "DOS state",
-        "description": "This will return with the DOS state that ZelFlux is in from 0 to infinity and if it reaches 10 it gets banned. **Public**",
+        "description": "This will return with the DOS state that Flux is in from 0 to infinity and if it reaches 10 it gets banned. **Public**",
         "operationId": "getDOSState",
         "responses": {
           "200": {
@@ -1797,10 +1760,10 @@
         }
       }
     },
-    "/zelflux/connectedpeers": {
+    "/flux/connectedpeers": {
       "get": {
         "tags": [
-          "ZelFlux"
+          "Flux"
         ],
         "summary": "Gets IP's of connected peers",
         "description": "Gets list of IP addresses of outgoing connected peers. **Public**",
@@ -1840,10 +1803,10 @@
         }
       }
     },
-    "/zelflux/connectedpeersinfo": {
+    "/flux/connectedpeersinfo": {
       "get": {
         "tags": [
-          "ZelFlux"
+          "Flux"
         ],
         "summary": "Gets info of connected peers",
         "description": "Gets list of ip addresses and rtt of the outgoing connected peers. **Public**",
@@ -1904,10 +1867,10 @@
         }
       }
     },
-    "/zelflux/incomingconnections": {
+    "/flux/incomingconnections": {
       "get": {
         "tags": [
-          "ZelFlux"
+          "Flux"
         ],
         "summary": "List of incoming connections",
         "description": "Gets list of IP addresses of incoming connected peers. **Public**",
@@ -1949,10 +1912,10 @@
         }
       }
     },
-    "/zelflux/incomingconnectionsinfo": {
+    "/flux/incomingconnectionsinfo": {
       "get": {
         "tags": [
-          "ZelFlux"
+          "Flux"
         ],
         "summary": "Gets info of incoming connections",
         "description": "Gets list of ip addresses and rtt of incoming connections. **Public**",
@@ -2021,13 +1984,13 @@
         }
       }
     },
-    "/zelflux/checkfluxavailability": {
+    "/flux/checkfluxavailability": {
       "get": {
         "tags": [
-          "ZelFlux"
+          "Flux"
         ],
-        "summary": "Check availability of ZelFlux",
-        "description": "Check if ZelFlux is reachable and available using IP of the ZelFlux's server. **Public**",
+        "summary": "Check availability of Flux",
+        "description": "Check if Flux is reachable and available using IP of the Flux's server. **Public**",
         "operationId": "checkFluxAvailability",
         "parameters": [
           {
@@ -2069,10 +2032,10 @@
         }
       }
     },
-    "/zelflux/checkcommunication": {
+    "/flux/checkcommunication": {
       "get": {
         "tags": [
-          "ZelFlux"
+          "Flux"
         ],
         "summary": "Check incoming/outgoing peers",
         "description": "Check if there is enough incoming/outgoing peers. **Public**",
@@ -2105,13 +2068,13 @@
         }
       }
     },
-    "/zelflux/broadcastmessage": {
+    "/flux/broadcastmessage": {
       "post": {
         "tags": [
-          "ZelFlux"
+          "Flux"
         ],
         "summary": "Broadcast message to peers",
-        "description": "Broadcast data message to peers that are connected. **AdminAndZelTeam**",
+        "description": "Broadcast data message to peers that are connected. **AdminAndFluxTeam**",
         "operationId": "broadcastMessageFromUserPost",
         "security": [
           {
@@ -2156,7 +2119,7 @@
                 "example": {
                   "status": "success",
                   "data": {
-                    "message": "Message successfully broadcasted to ZelFlux network"
+                    "message": "Message successfully broadcasted to Flux network"
                   }
                 }
               }
@@ -2166,10 +2129,10 @@
       },
       "get": {
         "tags": [
-          "ZelFlux"
+          "Flux"
         ],
         "summary": "Broadcast message to peers",
-        "description": "Broadcast data message to peers that are connected. **AdminAndZelTeam**",
+        "description": "Broadcast data message to peers that are connected. **AdminAndFluxTeam**",
         "security": [
           {
             "ZelID": []
@@ -2207,7 +2170,7 @@
                 "example": {
                   "status": "success",
                   "data": {
-                    "message": "Message successfully broadcasted to ZelFlux network"
+                    "message": "Message successfully broadcasted to Flux network"
                   }
                 }
               }
@@ -2216,13 +2179,13 @@
         }
       }
     },
-    "/zelflux/broadcastmessagetooutgoing": {
+    "/flux/broadcastmessagetooutgoing": {
       "post": {
         "tags": [
-          "ZelFlux"
+          "Flux"
         ],
         "summary": "Broadcast message to outgoing peers",
-        "description": "Broadcast data message to peers on outgoing connections. **AdminAndZelTeam**",
+        "description": "Broadcast data message to peers on outgoing connections. **AdminAndFluxTeam**",
         "operationId": "broadcastMessageToOutgoingFromUserPost",
         "security": [
           {
@@ -2267,7 +2230,7 @@
                 "example": {
                   "status": "success",
                   "data": {
-                    "message": "Message successfully broadcasted to ZelFlux network"
+                    "message": "Message successfully broadcasted to Flux network"
                   }
                 }
               }
@@ -2277,10 +2240,10 @@
       },
       "get": {
         "tags": [
-          "ZelFlux"
+          "Flux"
         ],
         "summary": "Broadcast message to outgoing peers",
-        "description": "Broadcast data message to peers on outgoing connections. **AdminAndZelTeam**",
+        "description": "Broadcast data message to peers on outgoing connections. **AdminAndFluxTeam**",
         "operationId": "broadcastMessageToOutgoingFromUser",
         "security": [
           {
@@ -2318,7 +2281,7 @@
                 "example": {
                   "status": "success",
                   "data": {
-                    "message": "Message successfully broadcasted to ZelFlux network"
+                    "message": "Message successfully broadcasted to Flux network"
                   }
                 }
               }
@@ -2327,13 +2290,13 @@
         }
       }
     },
-    "/zelflux/broadcastmessagetoincoming": {
+    "/flux/broadcastmessagetoincoming": {
       "post": {
         "tags": [
-          "ZelFlux"
+          "Flux"
         ],
         "summary": "Broadcast message to incoming peers",
-        "description": "Broadcast data message to peers on incoming connections. **AdminAndZelTeam**",
+        "description": "Broadcast data message to peers on incoming connections. **AdminAndFluxTeam**",
         "operationId": "broadcastMessageToIncomingFromUserPost",
         "security": [
           {
@@ -2378,7 +2341,7 @@
                 "example": {
                   "status": "success",
                   "data": {
-                    "message": "Message successfully broadcasted to ZelFlux network"
+                    "message": "Message successfully broadcasted to Flux network"
                   }
                 }
               }
@@ -2388,10 +2351,10 @@
       },
       "get": {
         "tags": [
-          "ZelFlux"
+          "Flux"
         ],
         "summary": "Broadcast message to incoming peers",
-        "description": "Broadcast data message to peers on incoming connections. **AdminAndZelTeam**",
+        "description": "Broadcast data message to peers on incoming connections. **AdminAndFluxTeam**",
         "operationId": "broadcastMessageToIncomingFromUser",
         "security": [
           {
@@ -2429,7 +2392,7 @@
                 "example": {
                   "status": "success",
                   "data": {
-                    "message": "Message successfully broadcasted to ZelFlux network"
+                    "message": "Message successfully broadcasted to Flux network"
                   }
                 }
               }
@@ -2438,13 +2401,13 @@
         }
       }
     },
-    "/zelflux/addpeer": {
+    "/flux/addpeer": {
       "get": {
         "tags": [
-          "ZelFlux"
+          "Flux"
         ],
         "summary": "Add peer option",
-        "description": "This call gives option to add peers to outgoing connections. **AdminAndZelTeam**",
+        "description": "This call gives option to add peers to outgoing connections. **AdminAndFluxTeam**",
         "operationId": "addPeer",
         "security": [
           {
@@ -2491,13 +2454,13 @@
         }
       }
     },
-    "/zelflux/removepeer": {
+    "/flux/removepeer": {
       "get": {
         "tags": [
-          "ZelFlux"
+          "Flux"
         ],
         "summary": "Remove peer option",
-        "description": "This call does exact opposite of add and removes/drops a outgoing connected peer. **AdminAndZelTeam**",
+        "description": "This call does exact opposite of add and removes/drops a outgoing connected peer. **AdminAndFluxTeam**",
         "operationId": "removePeer",
         "security": [
           {
@@ -2544,13 +2507,13 @@
         }
       }
     },
-    "/zelflux/removeincomingpeer": {
+    "/flux/removeincomingpeer": {
       "get": {
         "tags": [
-          "ZelFlux"
+          "Flux"
         ],
         "summary": "Remove incoming peer",
-        "description": "Remove a incoming connected peer. **AdminAndZelTeam**",
+        "description": "Remove a incoming connected peer. **AdminAndFluxTeam**",
         "operationId": "removeIncomingPeer",
         "security": [
           {
@@ -2597,13 +2560,13 @@
         }
       }
     },
-    "/zelflux/allowport": {
+    "/flux/allowport": {
       "get": {
         "tags": [
-          "ZelFlux"
+          "Flux"
         ],
         "summary": "Open port on server",
-        "description": "This will open a port on the server and adding it to the firewall rules. **AdminAndZelTeam**",
+        "description": "This will open a port on the server and adding it to the firewall rules. **AdminAndFluxTeam**",
         "operationId": "allowPortApi",
         "security": [
           {
@@ -2666,10 +2629,10 @@
         }
       }
     },
-    "/zelcash/help": {
+    "/daemon/help": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "RPC list",
         "description": "Gets list of RPC for the Zelcash daemon or if command query is used it will respond with the help info for that specified call. **Public**",
@@ -2704,7 +2667,7 @@
                 },
                 "example": {
                   "status": "success",
-                  "data": "== Addressindex ==\ngetaddressbalance {\"addresses\": [\"taddr\", ...]}\ngetaddressdeltas {\"addresses\": [\"taddr\", ...], (\"start\": n), (\"end\": n), (\"chainInfo\": true|false)}\ngetaddressmempool {\"addresses\": [\"taddr\", ...]}\ngetaddresstxids {\"addresses\": [\"taddr\", ...], (\"start\": n), (\"end\": n)}\ngetaddressutxos {\"addresses\": [\"taddr\", ...], (\"chainInfo\": true|false)}\n\n== Benchmarks ==\ngetbenchmarks\ngetbenchstatus\nstartzelbenchd\nstopzelbenchd\n\n== Blockchain ==\ngetbestblockhash\ngetblock \"hash|height\" ( verbosity )\ngetblockchaininfo\ngetblockcount\ngetblockdeltas \"blockhash\"\ngetblockhash index\ngetblockhashes high low ( {\"noOrphans\": true|false, \"logicalTimes\": true|false} )\ngetblockheader \"hash\" ( verbose )\ngetchaintips\ngetdifficulty\ngetmempoolinfo\ngetrawmempool ( verbose )\ngetspentinfo {\"txid\": \"txidhex\", \"index\": n}\ngettxout \"txid\" n ( includemempool )\ngettxoutproof [\"txid\",...] ( blockhash )\ngettxoutsetinfo\nverifychain ( checklevel numblocks )\nverifytxoutproof \"proof\"\n\n== Control ==\ngetinfo\nhelp ( \"command\" )\nstop\n\n== Disclosure ==\nz_getpaymentdisclosure \"txid\" \"js_index\" \"output_index\" (\"message\")\nz_validatepaymentdisclosure \"paymentdisclosure\"\n\n== Generating ==\ngenerate numblocks\ngetgenerate\nsetgenerate generate ( genproclimit )\n\n== Mining ==\ngetblocksubsidy height\ngetblocktemplate ( \"jsonrequestobject\" )\ngetlocalsolps\ngetmininginfo\ngetnetworkhashps ( blocks height )\ngetnetworksolps ( blocks height )\nprioritisetransaction <txid> <priority delta> <fee delta>\nsubmitblock \"hexdata\" ( \"jsonparametersobject\" )\n\n== Network ==\naddnode \"node\" \"add|remove|onetry\"\nclearbanned\ndisconnectnode \"node\"\ngetaddednodeinfo dns ( \"node\" )\ngetconnectioncount\ngetdeprecationinfo\ngetnettotals\ngetnetworkinfo\ngetpeerinfo\nlistbanned\nping\nsetban \"ip(/netmask)\" \"add|remove\" (bantime) (absolute)\n\n== Rawtransactions ==\ncreaterawtransaction [{\"txid\":\"id\",\"vout\":n},...] {\"address\":amount,...} ( locktime ) ( expiryheight )\ndecoderawtransaction \"hexstring\"\ndecodescript \"hex\"\nfundrawtransaction \"hexstring\"\ngetrawtransaction \"txid\" ( verbose )\nsendrawtransaction \"hexstring\" ( allowhighfees )\nsignrawtransaction \"hexstring\" ( [{\"txid\":\"id\",\"vout\":n,\"scriptPubKey\":\"hex\",\"redeemScript\":\"hex\"},...] [\"privatekey1\",...] sighashtype )\n\n== Util ==\ncreatemultisig nrequired [\"key\",...]\nestimatefee nblocks\nestimatepriority nblocks\nvalidateaddress \"zelcashaddress\"\nverifymessage \"zelcashaddress\" \"signature\" \"message\"\nz_validateaddress \"zaddr\"\n\n== Wallet ==\naddmultisigaddress nrequired [\"key\",...] ( \"account\" )\nbackupwallet \"destination\"\ndumpprivkey \"t-addr\"\ndumpwallet \"folder/filename\"\nencryptwallet \"passphrase\"\ngetaccount \"zelcashaddress\"\ngetaccountaddress \"account\"\ngetaddressesbyaccount \"account\"\ngetbalance ( \"account\" minconf includeWatchonly )\ngetnewaddress ( \"account\" )\ngetrawchangeaddress\ngetreceivedbyaccount \"account\" ( minconf )\ngetreceivedbyaddress \"zelcashaddress\" ( minconf )\ngettransaction \"txid\" ( includeWatchonly )\ngetunconfirmedbalance\ngetwalletinfo\nimportaddress \"address\" ( \"label\" rescan )\nimportprivkey \"zelcashprivkey\" ( \"label\" rescan )\nimportwallet \"filename\"\nkeypoolrefill ( newsize )\nlistaccounts ( minconf includeWatchonly)\nlistaddressgroupings\nlistlockunspent\nlistreceivedbyaccount ( minconf includeempty includeWatchonly)\nlistreceivedbyaddress ( minconf includeempty includeWatchonly)\nlistsinceblock ( \"blockhash\" target-confirmations includeWatchonly)\nlisttransactions ( \"account\" count from includeWatchonly)\nlistunspent ( minconf maxconf  [\"address\",...] )\nlockunspent unlock [{\"txid\":\"txid\",\"vout\":n},...]\nmove \"fromaccount\" \"toaccount\" amount ( minconf \"comment\" )\nrescanblockchain (start_height)\nsendfrom \"fromaccount\" \"tozelcashaddress\" amount ( minconf \"comment\" \"comment-to\" )\nsendmany \"fromaccount\" {\"address\":amount,...} ( minconf \"comment\" [\"address\",...] )\nsendtoaddress \"zelcashaddress\" amount ( \"comment\" \"comment-to\" subtractfeefromamount )\nsetaccount \"zelcashaddress\" \"account\"\nsettxfee amount\nsignmessage \"t-addr\" \"message\"\nz_exportkey \"zaddr\"\nz_exportviewingkey \"zaddr\"\nz_exportwallet \"folder/filename\"\nz_getbalance \"address\" ( minconf )\nz_getmigrationstatus\nz_getnewaddress ( type )\nz_getoperationresult ([\"operationid\", ... ])\nz_getoperationstatus ([\"operationid\", ... ])\nz_gettotalbalance ( minconf includeWatchonly )\nz_importkey \"zkey\" ( rescan startHeight )\nz_importviewingkey \"vkey\" ( rescan startHeight )\nz_importwallet \"filename\"\nz_listaddresses ( includeWatchonly )\nz_listoperationids\nz_listreceivedbyaddress \"address\" ( minconf )\nz_listunspent ( minconf maxconf includeWatchonly [\"zaddr\",...] )\nz_mergetoaddress [\"fromaddress\", ... ] \"toaddress\" ( fee ) ( transparent_limit ) ( shielded_limit ) ( memo )\nz_sendmany \"fromaddress\" [{\"address\":... ,\"amount\":...},...] ( minconf ) ( fee )\nz_setmigration enabled\nz_shieldcoinbase \"fromaddress\" \"tozaddress\" ( fee ) ( limit )\nzcbenchmark benchmarktype samplecount\nzcrawjoinsplit rawtx inputs outputs vpub_old vpub_new\nzcrawkeygen\nzcrawreceive zcsecretkey encryptednote\nzcsamplejoinsplit\n\n== Zelnode ==\ncreatezelnodebroadcast \"command\" ( \"alias\")\ncreatezelnodekey\ndecodezelnodebroadcast \"hexstring\"\ngetzelnodecount\ngetzelnodeoutputs\ngetzelnodescores ( blocks )\ngetzelnodestatus\ngetzelnodewinners ( blocks \"filter\" )\nlistzelnodeconf ( \"filter\" )\nlistzelnodes ( \"filter\" )\nrelayzelnodebroadcast \"hexstring\"\nspork \"name\" ( value )\nstartdeterministiczelnode alias_name lockwallet\nstartzelnode \"all|alias\" lockwallet ( \"alias\" )\nviewdeterministiczelnodelist ( \"filter\" )\nzelnodecurrentwinner\nzelnodedebug\nznsync \"status|reset\""
+                  "data": "== Addressindex ==\ngetaddressbalance {\"addresses\": [\"taddr\", ...]}\ngetaddressdeltas {\"addresses\": [\"taddr\", ...], (\"start\": n), (\"end\": n), (\"chainInfo\": true|false)}\ngetaddressmempool {\"addresses\": [\"taddr\", ...]}\ngetaddresstxids {\"addresses\": [\"taddr\", ...], (\"start\": n), (\"end\": n)}\ngetaddressutxos {\"addresses\": [\"taddr\", ...], (\"chainInfo\": true|false)}\n\n== Benchmarks ==\ngetbenchmarks\ngetbenchstatus\nstartbenchmark\nstopbenchmark\n\n== Blockchain ==\ngetbestblockhash\ngetblock \"hash|height\" ( verbosity )\ngetblockchaininfo\ngetblockcount\ngetblockdeltas \"blockhash\"\ngetblockhash index\ngetblockhashes high low ( {\"noOrphans\": true|false, \"logicalTimes\": true|false} )\ngetblockheader \"hash\" ( verbose )\ngetchaintips\ngetdifficulty\ngetmempoolinfo\ngetrawmempool ( verbose )\ngetspentinfo {\"txid\": \"txidhex\", \"index\": n}\ngettxout \"txid\" n ( includemempool )\ngettxoutproof [\"txid\",...] ( blockhash )\ngettxoutsetinfo\nverifychain ( checklevel numblocks )\nverifytxoutproof \"proof\"\n\n== Control ==\ngetinfo\nhelp ( \"command\" )\nstop\n\n== Disclosure ==\nz_getpaymentdisclosure \"txid\" \"js_index\" \"output_index\" (\"message\")\nz_validatepaymentdisclosure \"paymentdisclosure\"\n\n== Generating ==\ngenerate numblocks\ngetgenerate\nsetgenerate generate ( genproclimit )\n\n== Mining ==\ngetblocksubsidy height\ngetblocktemplate ( \"jsonrequestobject\" )\ngetlocalsolps\ngetmininginfo\ngetnetworkhashps ( blocks height )\ngetnetworksolps ( blocks height )\nprioritisetransaction <txid> <priority delta> <fee delta>\nsubmitblock \"hexdata\" ( \"jsonparametersobject\" )\n\n== Network ==\naddnode \"node\" \"add|remove|onetry\"\nclearbanned\ndisconnectnode \"node\"\ngetaddednodeinfo dns ( \"node\" )\ngetconnectioncount\ngetdeprecationinfo\ngetnettotals\ngetnetworkinfo\ngetpeerinfo\nlistbanned\nping\nsetban \"ip(/netmask)\" \"add|remove\" (bantime) (absolute)\n\n== Rawtransactions ==\ncreaterawtransaction [{\"txid\":\"id\",\"vout\":n},...] {\"address\":amount,...} ( locktime ) ( expiryheight )\ndecoderawtransaction \"hexstring\"\ndecodescript \"hex\"\nfundrawtransaction \"hexstring\"\ngetrawtransaction \"txid\" ( verbose )\nsendrawtransaction \"hexstring\" ( allowhighfees )\nsignrawtransaction \"hexstring\" ( [{\"txid\":\"id\",\"vout\":n,\"scriptPubKey\":\"hex\",\"redeemScript\":\"hex\"},...] [\"privatekey1\",...] sighashtype )\n\n== Util ==\ncreatemultisig nrequired [\"key\",...]\nestimatefee nblocks\nestimatepriority nblocks\nvalidateaddress \"zelcashaddress\"\nverifymessage \"zelcashaddress\" \"signature\" \"message\"\nz_validateaddress \"zaddr\"\n\n== Wallet ==\naddmultisigaddress nrequired [\"key\",...] ( \"account\" )\nbackupwallet \"destination\"\ndumpprivkey \"t-addr\"\ndumpwallet \"folder/filename\"\nencryptwallet \"passphrase\"\ngetaccount \"zelcashaddress\"\ngetaccountaddress \"account\"\ngetaddressesbyaccount \"account\"\ngetbalance ( \"account\" minconf includeWatchonly )\ngetnewaddress ( \"account\" )\ngetrawchangeaddress\ngetreceivedbyaccount \"account\" ( minconf )\ngetreceivedbyaddress \"zelcashaddress\" ( minconf )\ngettransaction \"txid\" ( includeWatchonly )\ngetunconfirmedbalance\ngetwalletinfo\nimportaddress \"address\" ( \"label\" rescan )\nimportprivkey \"zelcashprivkey\" ( \"label\" rescan )\nimportwallet \"filename\"\nkeypoolrefill ( newsize )\nlistaccounts ( minconf includeWatchonly)\nlistaddressgroupings\nlistlockunspent\nlistreceivedbyaccount ( minconf includeempty includeWatchonly)\nlistreceivedbyaddress ( minconf includeempty includeWatchonly)\nlistsinceblock ( \"blockhash\" target-confirmations includeWatchonly)\nlisttransactions ( \"account\" count from includeWatchonly)\nlistunspent ( minconf maxconf  [\"address\",...] )\nlockunspent unlock [{\"txid\":\"txid\",\"vout\":n},...]\nmove \"fromaccount\" \"toaccount\" amount ( minconf \"comment\" )\nrescanblockchain (start_height)\nsendfrom \"fromaccount\" \"tozelcashaddress\" amount ( minconf \"comment\" \"comment-to\" )\nsendmany \"fromaccount\" {\"address\":amount,...} ( minconf \"comment\" [\"address\",...] )\nsendtoaddress \"zelcashaddress\" amount ( \"comment\" \"comment-to\" subtractfeefromamount )\nsetaccount \"zelcashaddress\" \"account\"\nsettxfee amount\nsignmessage \"t-addr\" \"message\"\nz_exportkey \"zaddr\"\nz_exportviewingkey \"zaddr\"\nz_exportwallet \"folder/filename\"\nz_getbalance \"address\" ( minconf )\nz_getmigrationstatus\nz_getnewaddress ( type )\nz_getoperationresult ([\"operationid\", ... ])\nz_getoperationstatus ([\"operationid\", ... ])\nz_gettotalbalance ( minconf includeWatchonly )\nz_importkey \"zkey\" ( rescan startHeight )\nz_importviewingkey \"vkey\" ( rescan startHeight )\nz_importwallet \"filename\"\nz_listaddresses ( includeWatchonly )\nz_listoperationids\nz_listreceivedbyaddress \"address\" ( minconf )\nz_listunspent ( minconf maxconf includeWatchonly [\"zaddr\",...] )\nz_mergetoaddress [\"fromaddress\", ... ] \"toaddress\" ( fee ) ( transparent_limit ) ( shielded_limit ) ( memo )\nz_sendmany \"fromaddress\" [{\"address\":... ,\"amount\":...},...] ( minconf ) ( fee )\nz_setmigration enabled\nz_shieldcoinbase \"fromaddress\" \"tozaddress\" ( fee ) ( limit )\nzcbenchmark benchmarktype samplecount\nzcrawjoinsplit rawtx inputs outputs vpub_old vpub_new\nzcrawkeygen\nzcrawreceive zcsecretkey encryptednote\nzcsamplejoinsplit\n\n== Zelnode ==\ncreatezelnodebroadcast \"command\" ( \"alias\")\ncreatezelnodekey\ndecodezelnodebroadcast \"hexstring\"\ngetzelnodecount\ngetzelnodeoutputs\ngetzelnodescores ( blocks )\ngetzelnodestatus\ngetzelnodewinners ( blocks \"filter\" )\nlistzelnodeconf ( \"filter\" )\nlistzelnodes ( \"filter\" )\nrelayzelnodebroadcast \"hexstring\"\nspork \"name\" ( value )\nstartdeterministiczelnode alias_name lockwallet\nstartzelnode \"all|alias\" lockwallet ( \"alias\" )\nviewdeterministiczelnodelist ( \"filter\" )\nzelnodecurrentwinner\nzelnodedebug\nznsync \"status|reset\""
                 }
               }
             }
@@ -2712,10 +2675,10 @@
         }
       }
     },
-    "/zelcash/getinfo": {
+    "/daemon/getinfo": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Zelcash daemon info",
         "description": "Returns an object containing various state info for the Zelcash daemon. **Public**",
@@ -2732,7 +2695,7 @@
                       "$ref": "#/components/schemas/status"
                     },
                     "data": {
-                      "$ref": "#/components/schemas/zelcashgetinfo"
+                      "$ref": "#/components/schemas/daemongetinfo"
                     }
                   }
                 },
@@ -2762,13 +2725,13 @@
         }
       }
     },
-    "/zelcash/getzelnodestatus": {
+    "/daemon/getzelnodestatus": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
-        "summary": "ZelNode status",
-        "description": "Returns an object containing various state of the ZelNode. **Public**",
+        "summary": "Flux node status",
+        "description": "Returns an object containing various state of the Flux node. **Public**",
         "operationId": "getZelNodeStatus",
         "responses": {
           "200": {
@@ -2812,13 +2775,13 @@
         }
       }
     },
-    "/zelcash/listzelnodes": {
+    "/daemon/listzelnodes": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
-        "summary": "ZelNode list",
-        "description": "Gets a ranked list of Zelnodes. **Public**",
+        "summary": "Flux node list",
+        "description": "Gets a ranked list of Flux nodes. **Public**",
         "operationId": "listZelNodes",
         "responses": {
           "200": {
@@ -2842,27 +2805,27 @@
                           },
                           "ip": {
                             "type": "string",
-                            "description": "Ip address of ZelNode server"
+                            "description": "Ip address of Flux server"
                           },
                           "added_height": {
                             "type": "integer",
-                            "description": "Block height ZelNode was added to list"
+                            "description": "Block height Flux node was added to list"
                           },
                           "confirmed_height": {
                             "type": "integer",
-                            "description": "Block height ZelNode was confirmed by the network"
+                            "description": "Block height Flux node was confirmed by the network"
                           },
                           "last_confirmed_height": {
                             "type": "integer",
-                            "description": "Latest block height network confirmed the ZelNode"
+                            "description": "Latest block height network confirmed the Flux node"
                           },
                           "last_paid_height": {
                             "type": "integer",
-                            "description": "Block the ZelNode was last paid"
+                            "description": "Block the Flux node was last paid"
                           },
                           "tier": {
                             "type": "string",
-                            "description": "Tier of ZelNode"
+                            "description": "Tier of Flux node"
                           },
                           "payment_address": {
                             "type": "string",
@@ -2870,7 +2833,7 @@
                           },
                           "activesince": {
                             "type": "integer",
-                            "description": "Active time of ZelNode in epoch"
+                            "description": "Active time of Flux node in epoch"
                           },
                           "lastpaid": {
                             "type": "integer",
@@ -2878,7 +2841,7 @@
                           },
                           "rank": {
                             "type": "integer",
-                            "description": "Rank of ZelNode"
+                            "description": "Rank of Flux node"
                           }
                         }
                       }
@@ -2961,10 +2924,10 @@
         }
       }
     },
-    "/zelcash/viewdeterministiczelnodelist": {
+    "/daemon/viewdeterministiczelnodelist": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Deterministic ZelNode list",
         "description": "View deterministic list of ZelNodes by rank. **Public**",
@@ -3157,12 +3120,12 @@
         }
       }
     },
-    "/zelcash/getzelnodecount": {
+    "/daemon/getzelnodecount": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
-        "summary": "ZelNode count",
+        "summary": "Flux node count",
         "description": "Returns a count of ZelNodes and enabled ZelNodes categorized by tiers. **Public**",
         "operationId": "getZelNodeCount",
         "responses": {
@@ -3181,35 +3144,35 @@
                       "properties": {
                         "total": {
                           "type": "number",
-                          "description": "Total number of ZelNodes"
+                          "description": "Total number of Flux nodes"
                         },
                         "stable": {
                           "type": "number",
-                          "description": "Number of stable ZelNodes"
+                          "description": "Number of stable Flux nodes"
                         },
                         "basic-enabled": {
                           "type": "number",
-                          "description": "Basic ZelNode count"
+                          "description": "Basic Flux node count"
                         },
                         "super-enabled": {
                           "type": "number",
-                          "description": "Super ZelNode count"
+                          "description": "Super Flux node count"
                         },
                         "bamf-enabled": {
                           "type": "number",
-                          "description": "Bamf ZelNode count"
+                          "description": "Bamf Flux node count"
                         },
                         "ipv4": {
                           "type": "number",
-                          "description": "ZelNodes on ipv4"
+                          "description": "Flux nodes on ipv4"
                         },
                         "ipv6": {
                           "type": "number",
-                          "description": "ZelNodes on ipv6"
+                          "description": "Flux nodes on ipv6"
                         },
                         "onion": {
                           "type": "string",
-                          "description": "ZelNodes on tor"
+                          "description": "Flux nodes on tor"
                         }
                       }
                     }
@@ -3234,10 +3197,10 @@
         }
       }
     },
-    "/zelcash/getdoslist": {
+    "/daemon/getdoslist": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "ZelNode DOS list",
         "description": "Get a list of all zelnodes in the DOS list. **Public**",
@@ -3296,10 +3259,10 @@
         }
       }
     },
-    "/zelcash/getstartlist": {
+    "/daemon/getstartlist": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "ZelNode start list",
         "description": "Get a list of all zelnodes in the start list. **Public**",
@@ -3358,10 +3321,10 @@
         }
       }
     },
-    "/zelcash/spork": {
+    "/daemon/spork": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Spork info",
         "description": "Return spork values or their active state. **Public**",
@@ -3425,10 +3388,10 @@
         }
       }
     },
-    "/zelcash/zelnodecurrentwinner": {
+    "/daemon/zelnodecurrentwinner": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Current list of winners",
         "description": "Gets a list of current ZelNode winners. **Public**",
@@ -3603,10 +3566,10 @@
         }
       }
     },
-    "/zelcash/getbestblockhash": {
+    "/daemon/getbestblockhash": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Block hash of tip on longest chain",
         "description": "Returns the hash of the best (tip) block in the longest block chain. **Public**",
@@ -3638,10 +3601,10 @@
         }
       }
     },
-    "/zelcash/getblock": {
+    "/daemon/getblock": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Get block data",
         "description": "Gets block data using block height or block hash you specify to get info for with verbosity option. **Public**",
@@ -3843,10 +3806,10 @@
         }
       }
     },
-    "/zelcash/getblockchaininfo": {
+    "/daemon/getblockchaininfo": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Blockchain info",
         "description": "Returns an object containing various state info regarding block chain processing. Note that when the chain tip is at the last block before a network upgrade activation, consensus.chaintip != consensus.nextblock. **Public**",
@@ -4110,7 +4073,7 @@
                         "name": "Kamata",
                         "activationheight": 558000,
                         "status": "active",
-                        "info": "Zel Kamata Upgrade, Deterministic ZelNodes and ZelFlux"
+                        "info": "Zel Kamata Upgrade, Deterministic ZelNodes and Flux"
                       }
                     },
                     "consensus": {
@@ -4125,10 +4088,10 @@
         }
       }
     },
-    "/zelcash/getblockcount": {
+    "/daemon/getblockcount": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Current block count",
         "description": "Returns the number of blocks in the best valid block chain. **Public**",
@@ -4160,10 +4123,10 @@
         }
       }
     },
-    "/zelcash/getblockhash": {
+    "/daemon/getblockhash": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Get block's hash",
         "description": "Returns hash of block in best-block-chain at index provided. **Public**",
@@ -4207,10 +4170,10 @@
         }
       }
     },
-    "/zelcash/getblockheader": {
+    "/daemon/getblockheader": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Block header info",
         "description": "Returns an Object with information about blockheader. **Public**",
@@ -4339,10 +4302,10 @@
         }
       }
     },
-    "/zelcash/getchaintips": {
+    "/daemon/getchaintips": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "List of known chain tips",
         "description": "Return information about all known tips in the block tree, including the main chain as well as orphaned branches. **Public**",
@@ -4569,10 +4532,10 @@
         }
       }
     },
-    "/zelcash/getdifficulty": {
+    "/daemon/getdifficulty": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Proof of work difficulty",
         "description": "Returns the proof-of-work difficulty as a multiple of the minimum difficulty. **Public**",
@@ -4604,10 +4567,10 @@
         }
       }
     },
-    "/zelcash/getmempoolinfo": {
+    "/daemon/getmempoolinfo": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Memory pool info",
         "description": "Returns details on the active state of the TX memory pool. **Public**",
@@ -4656,10 +4619,10 @@
         }
       }
     },
-    "/zelcash/getrawmempool": {
+    "/daemon/getrawmempool": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Transaction ids in memory pool",
         "description": "Returns all transaction ids in memory pool as a json array of string. **Public**",
@@ -4798,10 +4761,10 @@
         }
       }
     },
-    "/zelcash/gettxout": {
+    "/daemon/gettxout": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Transaction IDs in memory pool",
         "description": "Returns all transaction ids in memory pool as a json array of string. **Public**",
@@ -4931,10 +4894,10 @@
         }
       }
     },
-    "/zelcash/gettxoutproof": {
+    "/daemon/gettxoutproof": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Hex-encoded proof of transaction",
         "description": "Returns a hex-encoded proof that \"txid\" was included in a block. **Public**",
@@ -4987,10 +4950,10 @@
         }
       }
     },
-    "/zelcash/gettxoutsetinfo": {
+    "/daemon/gettxoutsetinfo": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Unspent transaction output set info",
         "description": "Returns statistics about the unspent transaction output set. **Public**",
@@ -5059,10 +5022,10 @@
         }
       }
     },
-    "/zelcash/verifytxoutproof": {
+    "/daemon/verifytxoutproof": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Verifies a proof",
         "description": "Verifies that a proof points to a transaction in a block, returning the transaction it commits to and throwing an RPC error if the block is not in our best chain. **Public**",
@@ -5111,10 +5074,10 @@
         }
       }
     },
-    "/zelcash/getblocksubsidy": {
+    "/daemon/getblocksubsidy": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Block reward",
         "description": "Returns block subsidy reward, taking into account the mining slow start of block at index provided. **Public**",
@@ -5164,10 +5127,10 @@
         }
       }
     },
-    "/zelcash/getblocktemplate": {
+    "/daemon/getblocktemplate": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Data to construct a block",
         "description": "It returns data needed to construct a block to work on. **Public**",
@@ -5432,10 +5395,10 @@
         }
       }
     },
-    "/zelcash/getlocalsolps": {
+    "/daemon/getlocalsolps": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Average solutions per second",
         "description": "Returns the average local solutions per second since this node was started. **Public**",
@@ -5467,10 +5430,10 @@
         }
       }
     },
-    "/zelcash/getmininginfo": {
+    "/daemon/getmininginfo": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Mining related info",
         "description": "Returns a json object containing mining-related information. **Public**",
@@ -5569,10 +5532,10 @@
         }
       }
     },
-    "/zelcash/getnetworkhashps": {
+    "/daemon/getnetworkhashps": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Estimated network solutions",
         "description": "Returns the estimated network solutions per second based on the last n blocks. **Public**",
@@ -5626,10 +5589,10 @@
         }
       }
     },
-    "/zelcash/getnetworksolps": {
+    "/daemon/getnetworksolps": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Estimated network solutions",
         "description": "Returns the estimated network solutions per second based on the last n blocks. **Public**",
@@ -5683,10 +5646,10 @@
         }
       }
     },
-    "/zelcash/getconnectioncount": {
+    "/daemon/getconnectioncount": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Connection count",
         "description": "The peer connection count. **Public**",
@@ -5718,10 +5681,10 @@
         }
       }
     },
-    "/zelcash/getdeprecationinfo": {
+    "/daemon/getdeprecationinfo": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Deprecation info",
         "description": "Returns an object containing current version and deprecation block height. Applicable only on mainnet. **Public**",
@@ -5770,10 +5733,10 @@
         }
       }
     },
-    "/zelcash/getnettotals": {
+    "/daemon/getnettotals": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Network traffic info",
         "description": "Returns information about network traffic, including bytes in, bytes out, and current time. **Public**",
@@ -5822,10 +5785,10 @@
         }
       }
     },
-    "/zelcash/getnetworkinfo": {
+    "/daemon/getnetworkinfo": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Info regarding P2P network",
         "description": "Returns an object containing various state info regarding P2P networking. **Public**",
@@ -5977,10 +5940,10 @@
         }
       }
     },
-    "/zelcash/getpeerinfo": {
+    "/daemon/getpeerinfo": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Peer info",
         "description": "Returns data about each connected network node as a json array of objects. **Public**",
@@ -6144,10 +6107,10 @@
         }
       }
     },
-    "/zelcash/listbanned": {
+    "/daemon/listbanned": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Ban list",
         "description": "List all banned IPs/Subnets. **Public**",
@@ -6208,10 +6171,10 @@
         }
       }
     },
-    "/zelcash/createrawtransaction": {
+    "/daemon/createrawtransaction": {
       "post": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Create hex-encoded raw transaction",
         "description": "Create a transaction spending the given inputs and sending to the given addresses. Returns hex-encoded raw transaction. Note that the transaction's inputs are not signed, and it is not stored in the wallet or transmitted to the network. **Public**",
@@ -6304,7 +6267,7 @@
       },
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Create hex-encoded raw transaction",
         "description": "Create a transaction spending the given inputs and sending to the given addresses. Returns hex-encoded raw transaction. Note that the transaction's inputs are not signed, and it is not stored in the wallet or transmitted to the network. **Public**",
@@ -6416,10 +6379,10 @@
         }
       }
     },
-    "/zelcash/decoderawtransaction": {
+    "/daemon/decoderawtransaction": {
       "post": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Decoded info of the hex-encoded transaction",
         "description": "Return a JSON object representing the serialized, hex-encoded transaction. **Public**",
@@ -6510,7 +6473,7 @@
       },
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Decoded info of the hex-encoded transaction",
         "description": "Return a JSON object representing the serialized, hex-encoded transaction. **Public**",
@@ -6593,10 +6556,10 @@
         }
       }
     },
-    "/zelcash/decodescript": {
+    "/daemon/decodescript": {
       "post": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Decode hex script",
         "description": "Decode a hex-encoded script. **Public**",
@@ -6655,7 +6618,7 @@
       },
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Decode hex script",
         "description": "Decode a hex-encoded script. **Public**",
@@ -6706,10 +6669,10 @@
         }
       }
     },
-    "/zelcash/getrawtransaction": {
+    "/daemon/getrawtransaction": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Get raw transaction data",
         "description": "Gets raw transaction data from the txid, if verbose=0 then only hex data of transaction is shown, if verbose=1 then it will return with object of info of txid. **Public**",
@@ -6938,10 +6901,10 @@
         }
       }
     },
-    "/zelcash/fundrawtransaction": {
+    "/daemon/fundrawtransaction": {
       "post": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Add inputs to a transaction",
         "description": "Add inputs to a transaction until it has enough in value to meet its out value. This will not modify existing inputs, and will add one change output to the outputs. Note that inputs which were signed may need to be resigned after completion since in/outputs have been added. The inputs added will not be signed, use signrawtransaction for that. **Public**",
@@ -6996,7 +6959,7 @@
       },
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Add inputs to a transaction",
         "description": "Add inputs to a transaction until it has enough in value to meet its out value. This will not modify existing inputs, and will add one change output to the outputs. Note that inputs which were signed may need to be resigned after completion since in/outputs have been added. The inputs added will not be signed, use signrawtransaction for that. **Public**",
@@ -7043,10 +7006,10 @@
         }
       }
     },
-    "/zelcash/sendrawtransaction": {
+    "/daemon/sendrawtransaction": {
       "post": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Send raw transaction",
         "description": "Submits raw transaction (serialized, hex-encoded) to local node and network. Also see createrawtransaction and signrawtransaction calls. **Public**",
@@ -7104,7 +7067,7 @@
       },
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Send raw transaction",
         "description": "Submits raw transaction (serialized, hex-encoded) to local node and network. Also see createrawtransaction and signrawtransaction calls. **Public**",
@@ -7161,10 +7124,10 @@
         }
       }
     },
-    "/zelcash/createmultisig": {
+    "/daemon/createmultisig": {
       "post": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Create multi-sig address",
         "description": "Creates a multi-signature address with n signature of n keys required. **Public**",
@@ -7230,7 +7193,7 @@
       },
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Create multi-sig address",
         "description": "Creates a multi-signature address with n signature of n keys required. **Public**",
@@ -7288,10 +7251,10 @@
         }
       }
     },
-    "/zelcash/estimatefee": {
+    "/daemon/estimatefee": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Estimate fee nblocks",
         "description": "Estimates the approximate fee per kilobyte needed for a transaction to begin confirmation within nblocks blocks. **Public**",
@@ -7335,10 +7298,10 @@
         }
       }
     },
-    "/zelcash/estimatepriority": {
+    "/daemon/estimatepriority": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Estimate priority nblocks",
         "description": "Estimates the approximate priority a zero-fee transaction needs to begin confirmation within nblocks blocks. **Public**",
@@ -7382,10 +7345,10 @@
         }
       }
     },
-    "/zelcash/validateaddress": {
+    "/daemon/validateaddress": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Info of the Zelcash address",
         "description": "Return information about the given Zelcash address. **Public**",
@@ -7476,10 +7439,10 @@
         }
       }
     },
-    "/zelcash/verifymessage": {
+    "/daemon/verifymessage": {
       "post": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Verify a message",
         "description": "Verify a signed message. **Public**",
@@ -7541,7 +7504,7 @@
       },
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Verify a message",
         "description": "Verify a signed message. **Public**",
@@ -7605,10 +7568,10 @@
         }
       }
     },
-    "/zelcash/gettransaction": {
+    "/daemon/gettransaction": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Information about in-wallet transaction",
         "description": "Get detailed information about in-wallet transaction. **Public**",
@@ -7767,10 +7730,10 @@
         }
       }
     },
-    "/zelcash/zvalidateaddress": {
+    "/daemon/zvalidateaddress": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Information about given z address",
         "description": "Return information about the given z address. **Public**",
@@ -7846,10 +7809,10 @@
         }
       }
     },
-    "/zelcash/getbenchmarks": {
+    "/daemon/getbenchmarks": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Benchmark results",
         "description": "Return most recent benchmark results. **Public**",
@@ -7890,13 +7853,13 @@
         }
       }
     },
-    "/zelcash/getbenchstatus": {
+    "/daemon/getbenchstatus": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Bench status",
-        "description": "This will return the status of the node, what zelbenchd determined the tier the server could pass for, and if ZelFlux backend is connected. If any one of these return a negative result the ZelNode will fail to confirm. **Public**",
+        "description": "This will return the status of the node, what zelbenchd determined the tier the server could pass for, and if Flux backend is connected. If any one of these return a negative result the ZelNode will fail to confirm. **Public**",
         "operationId": "getBenchStatus",
         "responses": {
           "200": {
@@ -7928,10 +7891,10 @@
         }
       }
     },
-    "/zelcash/prioritisetransaction": {
+    "/daemon/prioritisetransaction": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Priortise a transaction",
         "description": "Accepts the transaction into mined blocks at a higher (or lower) priority. **User**",
@@ -8000,10 +7963,10 @@
         }
       }
     },
-    "/zelcash/reindexzelcash": {
+    "/daemon/reindexzelcash": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Reindex ZelCash daemon",
         "description": "Tries to reindex ZelCash daemon running on the ZelNode the call is run against. ZelCash daemon is firstly stopped and then started with reindex flag. **Admin**",
@@ -8041,10 +8004,10 @@
         }
       }
     },
-    "/zelcash/stop": {
+    "/daemon/stop": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Stop ZelCash daemon",
         "description": "This will stop the ZelCash daemon from running. **Admin**",
@@ -8081,10 +8044,10 @@
         }
       }
     },
-    "/zelcash/createzelnodekey": {
+    "/daemon/createzelnodekey": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Create zelnode private key",
         "description": "Create a new zelnode private key. **Admin**",
@@ -8121,10 +8084,10 @@
         }
       }
     },
-    "/zelcash/listzelnodeconf": {
+    "/daemon/listzelnodeconf": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "The zelnode conf file",
         "description": "View zelnode conf file in JSON format, this will return empty for most unless running a hot wallet. **Admin**",
@@ -8253,10 +8216,10 @@
         }
       }
     },
-    "/zelcash/getzelnodeoutputs": {
+    "/daemon/getzelnodeoutputs": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Zelnode transaction outputs",
         "description": "Print all zelnode transaction outputs. **Admin**",
@@ -8310,10 +8273,10 @@
         }
       }
     },
-    "/zelcash/startzelnode": {
+    "/daemon/startzelnode": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Start ZelNode commmand",
         "description": "Attempts to start one or more ZelNode. This call will only work if running a hot ZelNode which is highly not recommended. It is a control wallet function so basically your wallet containing the collateral funds. **Admin**",
@@ -8392,13 +8355,13 @@
         }
       }
     },
-    "/zelcash/startdeterministiczelnode": {
+    "/daemon/startdeterministiczelnode": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Start zelnode command",
-        "description": "Attempts to start one zelnode. Same as the `/zelcash/startzelnode` call this call will only work if running a hot ZelNode which is highly not recommended. It is a control wallet function so basically your wallet containing the collateral funds.  **Admin**",
+        "description": "Attempts to start one zelnode. Same as the `/daemon/startzelnode` call this call will only work if running a hot ZelNode which is highly not recommended. It is a control wallet function so basically your wallet containing the collateral funds.  **Admin**",
         "operationId": "startDeterministicZelNode",
         "security": [
           {
@@ -8465,10 +8428,10 @@
         }
       }
     },
-    "/zelcash/verifychain": {
+    "/daemon/verifychain": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Verify blockchain data",
         "description": "Verifies blockchain database. **Admin**",
@@ -8533,10 +8496,10 @@
         }
       }
     },
-    "/zelcash/addnode": {
+    "/daemon/addnode": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Add, remove, or try to connect a node",
         "description": "Attempts to add or remove a node from the addnode list. Or try a connection to a node once. **Admin**",
@@ -8554,7 +8517,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The node's ip:port (see `/zelcash/getpeerinfo` for nodes)",
+            "description": "The node's ip:port (see `/daemon/getpeerinfo` for nodes)",
             "example": "188.239.61.210:16125"
           },
           {
@@ -8598,10 +8561,10 @@
         }
       }
     },
-    "/zelcash/clearbanned": {
+    "/daemon/clearbanned": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Clear banned IP's",
         "description": "Clear all banned IP's. **Admin**",
@@ -8637,10 +8600,10 @@
         }
       }
     },
-    "/zelcash/disconnectnode": {
+    "/daemon/disconnectnode": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Disconnect a node",
         "description": "Immediately disconnects from the specified node. **Admin**",
@@ -8688,10 +8651,10 @@
         }
       }
     },
-    "/zelcash/getaddednodeinfo": {
+    "/daemon/getaddednodeinfo": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Info of added node/nodes",
         "description": "Returns information about the given added node, or all added nodes(note that onetry addnodes are not listed here). If dns is false, only a list of added nodes will be provided, otherwise connected information will also be available. **Admin**",
@@ -8811,10 +8774,10 @@
         }
       }
     },
-    "/zelcash/setban": {
+    "/daemon/setban": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Add or remove a IP from banned list",
         "description": "Attempts add or remove a IP/Subnet from the banned list. **Admin**",
@@ -8897,10 +8860,10 @@
         }
       }
     },
-    "/zelcash/signrawtransaction": {
+    "/daemon/signrawtransaction": {
       "post": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Sign raw transaction",
         "description": "Sign inputs for raw transaction (serialized, hex-encoded). The second optional argument (may be null) is an array of previous transaction outputs that this transaction depends on but may not yet be in the block chain. The third optional argument (may be null) is an array of base58-encoded private keys that, if given, will be the only keys used to sign the transaction. **Admin**",
@@ -9010,7 +8973,7 @@
       },
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Sign raw transaction",
         "description": "Sign inputs for raw transaction (serialized, hex-encoded). The second optional argument (may be null) is an array of previous transaction outputs that this transaction depends on but may not yet be in the block chain. The third optional argument (may be null) is an array of base58-encoded private keys that, if given, will be the only keys used to sign the transaction. **Admin**",
@@ -9131,10 +9094,10 @@
         }
       }
     },
-    "/zelcash/addmultisigaddress": {
+    "/daemon/addmultisigaddress": {
       "post": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Add multisig address to the wallet",
         "description": "Add a nrequired-to-sign multisignature address to the wallet. Each key is a Zelcash address or hex-encoded public key. **Admin**",
@@ -9203,7 +9166,7 @@
       },
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Add multisig address to the wallet",
         "description": "Add a nrequired-to-sign multisignature address to the wallet. Each key is a Zelcash address or hex-encoded public key. **Admin**",
@@ -9266,10 +9229,10 @@
         }
       }
     },
-    "/zelcash/backupwallet": {
+    "/daemon/backupwallet": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Backup wallet to destination file",
         "description": "Safely copies wallet.dat to destination filename. **Admin**",
@@ -9318,10 +9281,10 @@
         }
       }
     },
-    "/zelcash/dumpprivkey": {
+    "/daemon/dumpprivkey": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Get private key of a t-addr",
         "description": "Reveals the private key corresponding to t-addr. **Admin**",
@@ -9370,10 +9333,10 @@
         }
       }
     },
-    "/zelcash/getbalance": {
+    "/daemon/getbalance": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Total balance of wallet",
         "description": "Returns the server's total available balance. **Admin**",
@@ -9435,10 +9398,10 @@
         }
       }
     },
-    "/zelcash/getnewaddress": {
+    "/daemon/getnewaddress": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Get new address",
         "description": "Returns a new Zelcash address for receiving payments. **Admin**",
@@ -9475,10 +9438,10 @@
         }
       }
     },
-    "/zelcash/getrawchangeaddress": {
+    "/daemon/getrawchangeaddress": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Get new change address",
         "description": "Returns a new Zelcash address, for receiving change. This is for use with raw transactions, NOT normal use. **Admin**",
@@ -9515,10 +9478,10 @@
         }
       }
     },
-    "/zelcash/getreceivedbyaddress": {
+    "/daemon/getreceivedbyaddress": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Total received by the address",
         "description": "Returns the total amount received by the given Zelcash address in transactions with at least minconf confirmations. **Admin**",
@@ -9577,10 +9540,10 @@
         }
       }
     },
-    "/zelcash/getunconfirmedbalance": {
+    "/daemon/getunconfirmedbalance": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Get total unconfirmed balance",
         "description": "Returns the server's total unconfirmed balance. **Admin**",
@@ -9617,10 +9580,10 @@
         }
       }
     },
-    "/zelcash/getwalletinfo": {
+    "/daemon/getwalletinfo": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Get various info of the wallet",
         "description": "Returns an object containing various wallet state info. **Admin**",
@@ -9704,10 +9667,10 @@
         }
       }
     },
-    "/zelcash/importaddress": {
+    "/daemon/importaddress": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Import address to watch",
         "description": "Adds an address or script (in hex) that can be watched as if it were in your wallet but cannot be used to spend. **Admin**",
@@ -9778,10 +9741,10 @@
         }
       }
     },
-    "/zelcash/importprivkey": {
+    "/daemon/importprivkey": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Import private key to the wallet",
         "description": "Adds a private key (as returned by dumpprivkey) to your wallet. **Admin**",
@@ -9852,10 +9815,10 @@
         }
       }
     },
-    "/zelcash/importwallet": {
+    "/daemon/importwallet": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Import private keys from the dump file",
         "description": "Imports taddr keys from a wallet dump file. **Admin**",
@@ -9903,10 +9866,10 @@
         }
       }
     },
-    "/zelcash/keypoolrefill": {
+    "/daemon/keypoolrefill": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Refill keypool",
         "description": "Fills the keypool with more keys. Rarely used as not many will come close to using more than it comes with by default. **Admin**",
@@ -9954,10 +9917,10 @@
         }
       }
     },
-    "/zelcash/listaddressgroupings": {
+    "/daemon/listaddressgroupings": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "A list of addresses that have been used and known to the public",
         "description": "Lists groups of addresses which have had their common ownership made public by common use as inputs or as the resulting change in past transactions. **Admin**",
@@ -10012,10 +9975,10 @@
         }
       }
     },
-    "/zelcash/listlockunspent": {
+    "/daemon/listlockunspent": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "List of unspendable outputs",
         "description": "Returns list of temporarily unspendable outputs. **Admin**",
@@ -10069,10 +10032,10 @@
         }
       }
     },
-    "/zelcash/listreceivedbyaddress": {
+    "/daemon/listreceivedbyaddress": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "List of balances",
         "description": "List balances by receiving address. **Admin**",
@@ -10204,10 +10167,10 @@
         }
       }
     },
-    "/zelcash/listsinceblock": {
+    "/daemon/listsinceblock": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "List of transactions since block (blockhash)",
         "description": "Get all transactions in blocks since block [blockhash], or all transactions if omitted. **Admin**",
@@ -10308,10 +10271,10 @@
         }
       }
     },
-    "/zelcash/listtransactions": {
+    "/daemon/listtransactions": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "List of recent transactions",
         "description": "Returns up to count most recent transactions skipping the first from transactions for account 'account'. **Admin**",
@@ -10399,10 +10362,10 @@
         }
       }
     },
-    "/zelcash/listunspent": {
+    "/daemon/listunspent": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Returns objects of unspent transactions",
         "description": "Returns array of unspent transaction outputs with between minconf and maxconf (inclusive) confirmations. Optionally filter to only include txouts paid to specified addresses. Results are an array of Objects, each of which has: (txid, vout, scriptPubKey, amount, confirmations). **Admin**",
@@ -10524,10 +10487,10 @@
         }
       }
     },
-    "/zelcash/lockunspent": {
+    "/daemon/lockunspent": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Updates list of temporarily unspendable outputs",
         "description": "Temporarily lock (unlock=false) or unlock (unlock=true) specified transaction outputs. A locked transaction output will not be chosen by automatic coin selection, when spending Zelcash. Locks are stored in memory only. Nodes start with zero locked outputs, and the locked output list is always cleared (by virtue of process exit) when a node stops or fails. **Admin**",
@@ -10602,10 +10565,10 @@
         }
       }
     },
-    "/zelcash/rescanblockchain": {
+    "/daemon/rescanblockchain": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Rescans blockchain for transactions",
         "description": "Rescans the blockchain looking for transactions that belong to this wallet. **Admin**",
@@ -10654,10 +10617,10 @@
         }
       }
     },
-    "/zelcash/sendmany": {
+    "/daemon/sendmany": {
       "post": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Send to many receivers at once",
         "description": "Send to many receivers. Amounts are decimal numbers with at most 8 digits of precision. **Admin**",
@@ -10738,7 +10701,7 @@
       },
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Send to many receivers at once",
         "description": "Send to many receivers. Amounts are decimal numbers with at most 8 digits of precision. **Admin**",
@@ -10827,10 +10790,10 @@
         }
       }
     },
-    "/zelcash/sendtoaddress": {
+    "/daemon/sendtoaddress": {
       "post": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Send Zel to an address",
         "description": "Send an amount to a given address. **Admin**",
@@ -10908,7 +10871,7 @@
       },
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Send Zel to an address",
         "description": "Send an amount to a given address. **Admin**",
@@ -10998,10 +10961,10 @@
         }
       }
     },
-    "/zelcash/settxfee": {
+    "/daemon/settxfee": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Set transaction fee",
         "description": "This will restart the zelcash daemon. **Admin**",
@@ -11050,10 +11013,10 @@
         }
       }
     },
-    "/zelcash/signmessage": {
+    "/daemon/signmessage": {
       "post": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Sign a message",
         "description": "Sign a message with the private key of a t-addr. **Admin**",
@@ -11115,7 +11078,7 @@
       },
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Sign a message",
         "description": "Sign a message with the private key of a t-addr. **Admin**",
@@ -11174,10 +11137,10 @@
         }
       }
     },
-    "/zelcash/zexportkey": {
+    "/daemon/zexportkey": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Reveal z-addr private key",
         "description": "Reveals the zkey corresponding to zaddr. **Admin**",
@@ -11226,10 +11189,10 @@
         }
       }
     },
-    "/zelcash/zexportviewingkey": {
+    "/daemon/zexportviewingkey": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Reveal z-addr viewing key",
         "description": "Reveals the viewing key corresponding to zaddr. Only works with sprout zaddr's. **Admin**",
@@ -11278,10 +11241,10 @@
         }
       }
     },
-    "/zelcash/zgetbalance": {
+    "/daemon/zgetbalance": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Returns the balance of a taddr or zaddr",
         "description": "Returns the balance of a taddr or zaddr belonging to the node's wallet. CAUTION If the wallet has only an incoming viewing key for this address, then spends cannot be detected, and so the returned balance may be larger than the actual balance. **Admin**",
@@ -11340,10 +11303,10 @@
         }
       }
     },
-    "/zelcash/zgetmigrationstatus": {
+    "/daemon/zgetmigrationstatus": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Returns status info of the sprout to sapling migration",
         "description": "Returns information about the status of the Sprout to Sapling migration. Note that a transaction is defined as finalized if it has at least ten confirmations. Also, it is possible that manually created transactions involving this wallet will be included in the result. **Admin**",
@@ -11415,10 +11378,10 @@
         }
       }
     },
-    "/zelcash/zgetnewaddress": {
+    "/daemon/zgetnewaddress": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Create new shielded address",
         "description": "Returns a new shielded address for receiving payments. **Admin**",
@@ -11470,10 +11433,10 @@
         }
       }
     },
-    "/zelcash/zgetoperationresult": {
+    "/daemon/zgetoperationresult": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Get operation result",
         "description": "Retrieve the result and status of an operation which has finished, and then remove the operation from memory. **Admin**",
@@ -11545,10 +11508,10 @@
         }
       }
     },
-    "/zelcash/zgetoperationstatus": {
+    "/daemon/zgetoperationstatus": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Get operation status",
         "description": "Get operation status and any associated result or error data.  The operation will remain in memory. **Admin**",
@@ -11620,10 +11583,10 @@
         }
       }
     },
-    "/zelcash/zgettotalbalance": {
+    "/daemon/zgettotalbalance": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Get total balance of wallet",
         "description": "Return the total value of funds stored in the node's wallet. **Admin**",
@@ -11702,10 +11665,10 @@
         }
       }
     },
-    "/zelcash/zimportkey": {
+    "/daemon/zimportkey": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Import zaddress private key",
         "description": "Adds a zkey to your wallet. **Admin**",
@@ -11777,10 +11740,10 @@
         }
       }
     },
-    "/zelcash/zimportviewingkey": {
+    "/daemon/zimportviewingkey": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Import zaddress viewing key",
         "description": "Adds a viewing key to your wallet. **Admin**",
@@ -11852,10 +11815,10 @@
         }
       }
     },
-    "/zelcash/zimportwallet": {
+    "/daemon/zimportwallet": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Import wallet from export file",
         "description": "Imports taddr and zaddr keys from a wallet export file. **Admin**",
@@ -11903,10 +11866,10 @@
         }
       }
     },
-    "/zelcash/zlistaddresses": {
+    "/daemon/zlistaddresses": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Get list of all shielded addresses",
         "description": "Returns the list of Sprout and Sapling shielded addresses belonging to the wallet. **Admin**",
@@ -11966,10 +11929,10 @@
         }
       }
     },
-    "/zelcash/zlistoperationids": {
+    "/daemon/zlistoperationids": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Get list of operation ids",
         "description": "Returns the list of operation ids currently known to the wallet. **Admin**",
@@ -12012,10 +11975,10 @@
         }
       }
     },
-    "/zelcash/zlistreceivedbyaddress": {
+    "/daemon/zlistreceivedbyaddress": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "List of amounts received by zaddr",
         "description": "Return a list of amounts received by a zaddr belonging to the node's wallet. **Admin**",
@@ -12124,10 +12087,10 @@
         }
       }
     },
-    "/zelcash/zlistunspent": {
+    "/daemon/zlistunspent": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "List of unspent shielded notes",
         "description": "Returns array of unspent shielded notes with between minconf and maxconf (inclusive) confirmations. **Admin**",
@@ -12276,10 +12239,10 @@
         }
       }
     },
-    "/zelcash/zsendmany": {
+    "/daemon/zsendmany": {
       "post": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Send multiple transactions",
         "description": "Send multiple times. Amounts are decimal numbers with at most 8 digits of precision. Change generated from a taddr flows to a new taddr address, while change generated from a zaddr returns to itself. When sending coinbase UTXOs to a zaddr, change is not allowed. The entire value of the UTXO(s) must be consumed. Before Acadia (Sapling) activates, the maximum number of zaddr outputs is 54 due to transaction size limits. **Admin**",
@@ -12376,7 +12339,7 @@
       },
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Send multiple transactions",
         "description": "Send multiple times. Amounts are decimal numbers with at most 8 digits of precision. Change generated from a taddr flows to a new taddr address, while change generated from a zaddr returns to itself. When sending coinbase UTXOs to a zaddr, change is not allowed. The entire value of the UTXO(s) must be consumed. Before Acadia (Sapling) activates, the maximum number of zaddr outputs is 54 due to transaction size limits. **Admin**",
@@ -12472,10 +12435,10 @@
         }
       }
     },
-    "/zelcash/zsetmigration": {
+    "/daemon/zsetmigration": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Migrate funds to a sapling adress",
         "description": "When enabled the Sprout to Sapling migration will attempt to migrate all funds from this wallet’s sprout addresses to either the address for sapling account 0 or the address specified by the parameter '-migrationdestaddress'. This migration is designed to minimize information leakage. As a result for wallets with a significant sprout balance, this process may take several weeks. The migration works by sending, up to 5, as many transactions as possible whenever the blockchain reaches a height equal to 499 modulo 500. The transaction amounts are picked according to the random distribution specified in ZIP 308. The migration will end once the wallet’s sprout balance is below 0.01 ZEL. **Admin**",
@@ -12526,10 +12489,10 @@
         }
       }
     },
-    "/zelcash/zshieldcoinbase": {
+    "/daemon/zshieldcoinbase": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Shield coinbase",
         "description": "Shield transparent coinbase funds by sending to a shielded zaddr. This is an asynchronous operation and utxos selected for shielding will be locked. If there is an error, they are unlocked.  The RPC call listlockunspent can be used to return a list of locked utxos.  The number of coinbase utxos selected for shielding can be limited by the caller. If the limit parameter is set to zero, and Overwinter is not yet active, the -mempooltxinputlimit option will determine the number of uxtos. Any limit is constrained by the consensus rule defining a maximum transaction size of 100000 bytes before Acadia (Sapling,) and 2000000 bytes once Acadia (Sapling) activates.. **Admin**",
@@ -12633,14 +12596,14 @@
         }
       }
     },
-    "/zelcash/start": {
+    "/daemon/start": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Start ZelCash daemon",
-        "description": "Tries to start ZelCash daemon running on the ZelNode the call is run against without any extra parameters. **AdminAndZelTeam**",
-        "operationId": "startZelCashB",
+        "description": "Tries to start ZelCash daemon running on the ZelNode the call is run against without any extra parameters. **AdminAndFluxTeam**",
+        "operationId": "startdaemonB",
         "security": [
           {
             "ZelID": []
@@ -12674,14 +12637,14 @@
         }
       }
     },
-    "/zelcash/restart": {
+    "/daemon/restart": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Restart ZelCash daemon",
-        "description": "Tries to restart ZelCash daemon running on the ZelNode the call is run against. ZelCash daemon is firstly stopped and then started without any extra parameters. **AdminAndZelTeam**",
-        "operationId": "restartZelCashB",
+        "description": "Tries to restart ZelCash daemon running on the ZelNode the call is run against. ZelCash daemon is firstly stopped and then started without any extra parameters. **AdminAndFluxTeam**",
+        "operationId": "restartdaemonB",
         "security": [
           {
             "ZelID": []
@@ -12715,13 +12678,13 @@
         }
       }
     },
-    "/zelcash/ping": {
+    "/daemon/ping": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Ping request to measure ping time",
-        "description": "Requests that a ping be sent to all other nodes, to measure ping time. **AdminAndZelTeam**",
+        "description": "Requests that a ping be sent to all other nodes, to measure ping time. **AdminAndFluxTeam**",
         "operationId": "ping",
         "security": [
           {
@@ -12754,13 +12717,13 @@
         }
       }
     },
-    "/zelcash/zcbenchmark": {
+    "/daemon/zcbenchmark": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
         "summary": "Run benchmark of selected type and samplecount times",
-        "description": "Runs a benchmark of the selected type and samplecount times, returning the running times of each sample. **AdminAndZelTeam**",
+        "description": "Runs a benchmark of the selected type and samplecount times, returning the running times of each sample. **AdminAndFluxTeam**",
         "operationId": "zcBenchmark",
         "security": [
           {
@@ -12852,14 +12815,14 @@
         }
       }
     },
-    "/zelcash/startzelbenchd": {
+    "/daemon/startbenchmark": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
-        "summary": "Start ZelBench daemon",
-        "description": "Start ZelBench daemon. **AdminAndZelTeam**",
-        "operationId": "startZelBenchD",
+        "summary": "Start Benchmark daemon",
+        "description": "Start Benchmark daemon. **AdminAndFluxTeam**",
+        "operationId": "startbenchmark",
         "security": [
           {
             "ZelID": []
@@ -12892,14 +12855,14 @@
         }
       }
     },
-    "/zelcash/stopzelbenchd": {
+    "/daemon/stopbenchmark": {
       "get": {
         "tags": [
-          "ZelCash"
+          "Daemon"
         ],
-        "summary": "Stop ZelBench daemon",
-        "description": "Stop ZelBench daemon. **AdminAndZelTeam**",
-        "operationId": "stopZelBenchD",
+        "summary": "Stop Benchmark daemon",
+        "description": "Stop Benchmark daemon. **AdminAndFluxTeam**",
+        "operationId": "stopbenchmark",
         "security": [
           {
             "ZelID": []
@@ -12932,13 +12895,13 @@
         }
       }
     },
-    "/zelbench/getstatus": {
+    "/benchmark/getstatus": {
       "get": {
         "tags": [
-          "ZelBench"
+          "Benchmark"
         ],
         "summary": "Zelbench status",
-        "description": "This will return the status of the node, what ZelBenchd determined the tier the server could pass for, and if ZelFlux backend is connected. If any one of these return a negative result the ZelNode will fail to confirm. **Public**",
+        "description": "This will return the status of the node, what ZelBenchd determined the tier the server could pass for, and if Flux backend is connected. If any one of these return a negative result the ZelNode will fail to confirm. **Public**",
         "operationId": "getStatus",
         "responses": {
           "200": {
@@ -12970,10 +12933,10 @@
         }
       }
     },
-    "/zelbench/help": {
+    "/benchmark/help": {
       "get": {
         "tags": [
-          "ZelBench"
+          "Benchmark"
         ],
         "summary": "Zelbench calls",
         "description": "This will return with a list of calls for ZelBench. **Public**",
@@ -13005,10 +12968,10 @@
         }
       }
     },
-    "/zelbench/getbenchmarks": {
+    "/benchmark/getbenchmarks": {
       "get": {
         "tags": [
-          "ZelBench"
+          "Benchmark"
         ],
         "summary": "Benchmark results",
         "description": "Return most recent benchmark results. **Public**",
@@ -13049,10 +13012,10 @@
         }
       }
     },
-    "/zelbench/getinfo": {
+    "/benchmark/getinfo": {
       "get": {
         "tags": [
-          "ZelBench"
+          "Benchmark"
         ],
         "summary": "Zelbench status",
         "description": "This will return with the zelbench status of the zelnode. **Public**",
@@ -13086,13 +13049,13 @@
         }
       }
     },
-    "/zelbench/restartnodebenchmarks": {
+    "/benchmark/restartnodebenchmarks": {
       "get": {
         "tags": [
-          "ZelBench"
+          "Benchmark"
         ],
         "summary": "Restart ZelBench daemon",
-        "description": "This will restart the ZelBench daemon and start bench process. **AdminAndZelTeam**",
+        "description": "This will restart the ZelBench daemon and start bench process. **AdminAndFluxTeam**",
         "operationId": "restartNodeBenchmarks",
         "security": [
           {
@@ -13126,14 +13089,14 @@
         }
       }
     },
-    "/zelbench/stop": {
+    "/benchmark/stop": {
       "get": {
         "tags": [
-          "ZelBench"
+          "Benchmark"
         ],
         "summary": "Stop zelbench daemon",
         "description": "This will stop the zelbench daemon. **Admin**",
-        "operationId": "stopZelBenchDaemon",
+        "operationId": "stopbenchmarkaemon",
         "security": [
           {
             "ZelID": []
@@ -13166,10 +13129,10 @@
         }
       }
     },
-    "/zelbench/signzelnodetransaction": {
+    "/benchmark/signzelnodetransaction": {
       "post": {
         "tags": [
-          "ZelBench"
+          "Benchmark"
         ],
         "summary": "Sign ZelNode transaction",
         "description": "Command to get ZelBenchd to sign a ZelNode broadcast. **Admin**",
@@ -13229,7 +13192,7 @@
       },
       "get": {
         "tags": [
-          "ZelBench"
+          "Benchmark"
         ],
         "summary": "Sign ZelNode transaction",
         "description": "Command to get ZelBenchd to sign a ZelNode broadcast. **Admin**",
@@ -13284,7 +13247,7 @@
     "/zelapps/listrunningzelapps": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "list running apps",
         "description": "List and info of running apps. **Public**",
@@ -13381,7 +13344,7 @@
     "/zelapps/listallzelapps": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "list all apps",
         "description": "List and info of all apps. **Public**",
@@ -13478,7 +13441,7 @@
     "/zelapps/listzelappsimages": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "List of images",
         "description": "List of zelapps images installed. **Public**",
@@ -13605,7 +13568,7 @@
     "/zelapps/installedzelapps": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "installed apps",
         "description": "Info of installed apps. **Public**",
@@ -13718,7 +13681,7 @@
     "/zelapps/availablezelapps": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "available apps",
         "description": "Info of available apps. **Public**",
@@ -13901,7 +13864,7 @@
     "/zelapps/zelshare/getfile": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "Share files",
         "description": "Call to retrieve share file. **Public**",
@@ -13937,7 +13900,7 @@
     "/zelapps/zelfluxusage": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "Zelflux's usage",
         "description": "Will return amount of cpu resource zelflux is using. **Public**",
@@ -13972,7 +13935,7 @@
     "/zelapps/zelappsresources": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "Zelflux's usage of resources",
         "description": "Will return data of resource zelflux is using. **Public**",
@@ -14010,7 +13973,7 @@
     "/zelapps/registrationinformation": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "Registration Info",
         "description": "Zelapps registration info. **Public**",
@@ -14134,7 +14097,7 @@
     "/zelapps/temporarymessages": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "Temporary registration info",
         "description": "Temporary registration info that will expire after 1 hour. **Public**",
@@ -14228,7 +14191,7 @@
     "/zelapps/permanentmessages": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "Permanent registration info",
         "description": "Registration info of apps that have been stored to the database. **Public**",
@@ -14319,7 +14282,7 @@
     "/zelapps/globalappsspecifications": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "Global app specs",
         "description": "List of global app specifications. **Public**",
@@ -14375,7 +14338,7 @@
     "/zelapps/appspecifications": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "Global app specs of app specified",
         "description": "This will return app specifications of the queried app. **Public**",
@@ -14443,7 +14406,7 @@
     "/zelapps/appowner": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "App owner's ZelID",
         "description": "This will return the ZelID of the owner of the app specified. **Public**",
@@ -14490,7 +14453,7 @@
     "/zelapps/hashes": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "Application Hash info",
         "description": "Get list of app hashes and related info. **Public**",
@@ -14564,7 +14527,7 @@
     "/zelapps/location": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "Info regarding app location",
         "description": "This will return data regarding the location of app specified. **Public**",
@@ -14625,7 +14588,7 @@
     "/zelapps/locations": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "List of app locations",
         "description": "This will return a list of known apps on the network and it's locations data. **Public**",
@@ -14688,7 +14651,7 @@
     "/zelapps/calculateprice": {
       "post": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "Calculate price of app",
         "description": "Calculate price by sending request with specs required for app you are registering. **Public**\n\nNote: If tiered value is set to true you will also need to add the following key/value pairs\n- `cpubasic: <n value of cpu core>`, `cpusuper: <n value of cpu core>`, `cpubamf: <n value of cpu core>`, `rambasic: <n value in mb>`, `ramsuper: <n value in mb>`, `rambamf: <n value in mb>`, `hddbasic: <n value in gb>`, `hddsuper: <n value in gb>`, `hddbamf: <n value in gb>`",
@@ -14762,7 +14725,7 @@
     "/zelapps/zelappstart": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "Starts app",
         "description": "This will start the zelapp. **AppOwnerAbove**",
@@ -14814,7 +14777,7 @@
     "/zelapps/zelappstop": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "Stops app",
         "description": "This will stop the zelapp. **AppOwnerAbove**",
@@ -14866,7 +14829,7 @@
     "/zelapps/zelapprestart": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "Restarts app",
         "description": "This will restart the zelapp. **AppOwnerAbove**",
@@ -14918,7 +14881,7 @@
     "/zelapps/zelapppause": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "Pause app",
         "description": "This will pause the zelapp. **AppOwnerAbove**",
@@ -14970,7 +14933,7 @@
     "/zelapps/zelappunpause": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "Unpause app",
         "description": "This will unpause the zelapp. **AppOwnerAbove**",
@@ -15022,7 +14985,7 @@
     "/zelapps/zelapptop": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "List of running processes",
         "description": "Display the running processes of a container. **AppOwnerAbove**",
@@ -15131,7 +15094,7 @@
     "/zelapps/zelapplog": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "App's log",
         "description": "This will fetch the logs of a zelapp. **AppOwnerAbove**",
@@ -15201,7 +15164,7 @@
     "/zelapps/zelappinspect": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "Info of the app",
         "description": "Displays detailed info of the container. **AppOwnerAbove**",
@@ -16218,7 +16181,7 @@
     "/zelapps/zelappstats": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "App stats based on resource usage",
         "description": "Returns containers resource usage. **AppOwnerAbove**",
@@ -16369,7 +16332,7 @@
     "/zelapps/zelappchanges": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "Container changes",
         "description": "Data of changes made to container. If no changes it will return a null response which is usually the case. **AppOwnerAbove**\n\nKind values:\n- `0 = Modified`\n- `1 = Added`\n- `2 = Deleted`",
@@ -16440,7 +16403,7 @@
     "/zelapps/zelappexec": {
       "post": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "Run a command in the container",
         "description": "Run new commands inside running containers. **AppOwner**",
@@ -16505,10 +16468,10 @@
     "/zelapps/zelappremove": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "Clean and remove container",
-        "description": "This will stop, clean data, close port, and remove the container. **AdminAndZelTeam**",
+        "description": "This will stop, clean data, close port, and remove the container. **AdminAndFluxTeam**",
         "operationId": "removeZelAppLocally",
         "security": [
           {
@@ -16557,10 +16520,10 @@
     "/zelapps/installtemporarylocalapp": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "Install local app",
-        "description": "Register, install, and run app specified in query param. **AdminAndZelTeam**\n\n_Note: Below example of response is last bit of a continuous stream of data_ ",
+        "description": "Register, install, and run app specified in query param. **AdminAndFluxTeam**\n\n_Note: Below example of response is last bit of a continuous stream of data_ ",
         "operationId": "installTemporaryLocalApplication",
         "security": [
           {
@@ -16600,11 +16563,11 @@
     "/zelapps/createzelfluxnetwork": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "Create flux network",
-        "description": "This will create flux network if none is detected. **AdminAndZelTeam**",
-        "operationId": "createZelFluxNetwork",
+        "description": "This will create flux network if none is detected. **AdminAndFluxTeam**",
+        "operationId": "createFluxNetwork",
         "security": [
           {
             "ZelID": []
@@ -16640,10 +16603,10 @@
     "/zelapps/rescanglobalappsinformation": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "Rescan and update global ZelApps info database",
-        "description": "Rescans global zelapps permanent messages since selected blockheight and updates global zelapps information database. **AdminAndZelTeam**",
+        "description": "Rescans global zelapps permanent messages since selected blockheight and updates global zelapps information database. **AdminAndFluxTeam**",
         "operationId": "rescanGlobalAppsInformationAPI",
         "security": [
           {
@@ -16706,10 +16669,10 @@
     "/zelapps/reindexglobalappsinformation": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "Reindex zelappsinformation collection and rebuild",
-        "description": "This will drop zelappslocations collection, recreate indexes, and rebuild incoming messages. **AdminAndZelTeam**",
+        "description": "This will drop zelappslocations collection, recreate indexes, and rebuild incoming messages. **AdminAndFluxTeam**",
         "operationId": "reindexGlobalAppsInformationAPI",
         "security": [
           {
@@ -16747,10 +16710,10 @@
     "/zelapps/reindexglobalappslocation": {
       "get": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "Reindex zelappslocations collection and rebuild",
-        "description": "Function that drops information about running zelapps and rebuilds indexes. **AdminAndZelTeam**",
+        "description": "Function that drops information about running zelapps and rebuilds indexes. **AdminAndFluxTeam**",
         "operationId": "reindexGlobalAppsLocationAPI",
         "security": [
           {
@@ -16788,7 +16751,7 @@
     "/zelapps/checkdockerexistance": {
       "post": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "Checks Docker Hub for image",
         "description": "This will check Docker Hub and verify image is available. **User**",
@@ -16848,7 +16811,7 @@
     "/zelapps/zelappregister": {
       "post": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "App registration",
         "description": "This call is to provide required info to register app on Flux. **User**\n\nNote: Signature is following message signed in the format shown below\n- `this.updatetype + this.version + JSON.stringify(zelAppSpecFormatted) + this.timestamp`\n\nExample:\n- `zelappregister1{\"version\":1,\"name\":\"Mario\",\"description\":\"InfiniteMario\",\"repotag\":\"bharathshetty4/supermario:latest\",\"owner\":\"1FLUX1AHpR35EiPHH4HUMsWzugTaj1Gp6M\",\"port\":31000,\"enviromentParameters\":[],\"commands\":[],\"containerPort\":8600,\"containerData\":\"/tmp\",\"cpu\":0.1,\"ram\":100,\"hdd\":1,\"tiered\":false}1600255247532`",
@@ -16950,7 +16913,7 @@
     "/zelapps/zelappupdate": {
       "post": {
         "tags": [
-          "ZelApps"
+          "Apps"
         ],
         "summary": "App update",
         "description": "This call is to provide required info to update app on Flux. **User**\n\nNote: Signature is following message signed in the format shown below\n- `this.updatetype + this.version + JSON.stringify(zelAppSpecFormatted) + this.timestamp`\n\nExample:\n- `zelappregister1{\"version\":1,\"name\":\"Mario\",\"description\":\"InfiniteMario\",\"repotag\":\"bharathshetty4/supermario:latest\",\"owner\":\"1FLUX1AHpR35EiPHH4HUMsWzugTaj1Gp6M\",\"port\":31000,\"enviromentParameters\":[],\"commands\":[],\"containerPort\":8600,\"containerData\":\"/tmp\",\"cpu\":0.1,\"ram\":100,\"hdd\":1,\"tiered\":false}1600255247532`",
@@ -17430,7 +17393,7 @@
           "Explorer"
         ],
         "summary": "Reindex collection",
-        "description": "Drop ZelCash collection and recreate it. **AdminAndZelTeam**",
+        "description": "Drop ZelCash collection and recreate it. **AdminAndFluxTeam**",
         "operationId": "reindexExplorer",
         "security": [
           {
@@ -17470,7 +17433,7 @@
           "Explorer"
         ],
         "summary": "Restart block processing",
-        "description": "Restarts ZelCash collection. **AdminAndZelTeam**",
+        "description": "Restarts ZelCash collection. **AdminAndFluxTeam**",
         "operationId": "restartBlockProcessing",
         "security": [
           {
@@ -17510,7 +17473,7 @@
           "Explorer"
         ],
         "summary": "Stops block processing",
-        "description": "Stops ZelCash collection. **AdminAndZelTeam**",
+        "description": "Stops ZelCash collection. **AdminAndFluxTeam**",
         "operationId": "stopBlockProcessing",
         "security": [
           {
@@ -17550,7 +17513,7 @@
           "Explorer"
         ],
         "summary": "Rescan explorer",
-        "description": "Rescan explorer from selected block height. **AdminAndZelTeam**",
+        "description": "Rescan explorer from selected block height. **AdminAndFluxTeam**",
         "operationId": "rescanExplorer",
         "security": [
           {
@@ -17608,7 +17571,7 @@
         "type": "object",
         "properties": {
           "loginPhrase": {
-            "description": "Login Phrase. Provided by GET /zelid/loginphrase.",
+            "description": "Login Phrase. Provided by GET /id/loginphrase.",
             "type": "string",
             "minLength": 40,
             "example": "1574991374806spbcvsuwerl52tppx9dw5khuz8rew13mkq86gg8r2c"
@@ -17732,7 +17695,7 @@
           },
           "zelback": {
             "type": "string",
-            "description": "Status of ZelFlux backend"
+            "description": "Status of Flux backend"
           }
         }
       },
@@ -18504,7 +18467,7 @@
           }
         }
       },
-      "zelcashgetinfo": {
+      "daemongetinfo": {
         "type": "object",
         "properties": {
           "version": {
@@ -18939,7 +18902,7 @@
     },
     "securitySchemes": {
       "ZelID": {
-        "description": "Zel ID is an authentication system based on Bitcoin message signing. zelidauth header consist of stringified query of zelid, signature, loginPhrase Please refer to Authentication workflow section on how to obtain correct zelidauth header. An example of a header is `zelid=1CbErtneaX2QVyUfwU7JGB7VzvPgrgc3uC&signature=%2BZB3oSrsw6XkBxxlbwk33LEBJYvqtbMIm2kL9JzuoXMC6pSZd0lBHdnhJYzMTXv81zZQ7G%2FpkK1NvYN7cNF0GE%3D&loginPhrase=1574991374806spbcvsuwerl52tppx9dw5khuz8rew13mkq86gg8r2c`",
+        "description": "ZelID is an authentication system based on Bitcoin message signing. zelidauth header consist of stringified query of zelid, signature, loginPhrase Please refer to Authentication workflow section on how to obtain correct zelidauth header. An example of a header is `zelid=1CbErtneaX2QVyUfwU7JGB7VzvPgrgc3uC&signature=%2BZB3oSrsw6XkBxxlbwk33LEBJYvqtbMIm2kL9JzuoXMC6pSZd0lBHdnhJYzMTXv81zZQ7G%2FpkK1NvYN7cNF0GE%3D&loginPhrase=1574991374806spbcvsuwerl52tppx9dw5khuz8rew13mkq86gg8r2c`",
         "type": "apiKey",
         "in": "header",
         "name": "zelidauth"
